@@ -1,0 +1,99 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@product-name-link__color: @text__color;
+@product-name-link__color__active: @text__color;
+@product-name-link__color__hover: @text__color;
+@product-name-link__color__visited: @text__color;
+
+@product-name-link__text-decoration: none;
+@product-name-link__text-decoration__active: @link__hover__text-decoration;
+@product-name-link__text-decoration__hover: @link__hover__text-decoration;
+@product-name-link__text-decoration__visited: @link__hover__text-decoration;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  .product {
+    .product-item-info {
+      .image {
+        width: 100%;
+      }
+    }
+    .product-item-details {
+      padding: 0 15px 15px 15px;
+    }
+
+    .product-info {
+      border-top-width: 0;
+      border-left-width: 2px;
+      border-right-width: 2px;
+      border-bottom-width: 2px;
+      border-style: solid;
+      border-color: #000000;
+      padding: 10px;
+    }
+    .product.name a {
+      font-weight: bold;
+      color: #000000;
+      &:hover, &:focus, &:active, &:visited {
+        color: #000000;
+        text-decoration: none;
+      }
+    }
+    .product-item-inner{
+      margin-top:10px;
+    }
+    .actions-primary{
+      width:100%;
+      .clearfix;
+    }
+    .add-to-links{
+      float: left;
+    }
+    .action.tocart.primary{
+      float:right;
+    }
+  }
+
+  .qty {
+    float: left;
+  }
+  .qty-control {
+    float: left;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    &.control input {
+      width: 16px!important;
+      height: auto!important;
+      border: 0;
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      font-size: 20px;
+      margin-top: 3px;
+      &:disabled{
+        color: rgb(138, 158, 156);
+      }
+    }
+  }
+  .qty-min, .qty-plus {
+    cursor: pointer;
+    margin: 10px 5px;
+    &[disabled]{
+      cursor: auto;
+    }
+  }
+}

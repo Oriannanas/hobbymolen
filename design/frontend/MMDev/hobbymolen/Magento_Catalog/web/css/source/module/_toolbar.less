@@ -1,0 +1,64 @@
+.toolbar {
+  .clearfix;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  float: right;
+  .toolbar-sorter {
+    width: auto;
+    position: relative;
+    float: left;
+    select {
+      border: 0;
+      font-weight: bold;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      width: auto;
+    }
+    label {
+      position: absolute;
+      right: 10px;
+      top: 0;
+    }
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+      select {
+        padding-right: 18px
+      }
+    }
+    label:after {
+      content: '';
+      margin-top: 10px;
+      float: left;
+      background: @icon_arrow_down;
+      width: 16px;
+      height: 14px;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
+  .pages {
+    float: left;
+    margin-left: 60px;
+    > .label {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      overflow: auto;
+      padding: 6px;
+      position: relative;
+      width: auto;
+      display: inline-block;
+      float: left;
+    }
+    .pages-items{
+      float:left;
+      a span {
+        color: black;
+        text-decoration: underline;
+      }
+    }
+  }
+}

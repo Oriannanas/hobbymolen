@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
+    <!--<exclude>-->
+        <!--<item type="file">Lib::jquery/jquery-ui-1.9.2.js</item>-->
+    <!--</exclude>-->
+    <media>
+        <images module="Magento_Catalog">
+            <image id="category_page_grid" type="small_image">
+                <width>324</width>
+                <height>324</height>
+            </image>
+            <image id="category_page_list" type="small_image">
+                <width>324</width>
+                <height>324</height>
+            </image>
+        </images>
+    </media>
+</view>

@@ -1,0 +1,43 @@
+<?php
+/**
+ * @var \MMDev\CategoryWidget\Block\Widget\CategoryWidget   $this
+ * @var \Magento\Catalog\Model\ResourceModel\Category\Collection $categories
+ */
+
+$categories = $this->getCategoryCollection();
+$canShowImg = $this->canShowImage();
+$title      = $block->getTitle() ? __($block->getTitle()) : 'Categorieen';
+?>
+<div class="category-list">
+  <?php if ($title): ?>
+      <h2 class="block-title category-border">
+          <strong><?php echo $block->escapeHtml($title) ?></strong>
+      </h2>
+  <?php endif ?>
+    <div class="row">
+      <?php
+      $i = 1;
+      foreach ($categories as $key => $category):?>
+          <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
+              <div class="<?= $this->getData('category_class') ?: "col-xs-6 col-md-4" ?> category-list-item">
+                  <div class="category category-<?= $i++ ?> <?= strtolower(str_replace(' ', '-', $category->getName())) ?>">
+                      <div class="category-background">
+                        <?php if ($canShowImg):
+                          $lImageUrl = $block->escapeUrl($category->getImageUrl());
+                          if (!$lImageUrl) {
+                            $lImageUrl = $this->getViewFileUrl('images/layout/pixel.png');
+                          }
+                          ?>
+                            <img class="category-image" src="<?php echo $lImageUrl ?>"
+                                 alt="<?php echo $block->escapeHtml($category->getName()) ?>" width="100%"/>
+                        <?php endif; ?>
+                      </div>
+                      <div class="category-content">
+                          <span class="category-title"><?php echo $block->escapeHtml($category->getName()) ?></span>
+                      </div>
+                  </div>
+              </div>
+          </a>
+      <?php endforeach; ?>
+    </div>
+</div>

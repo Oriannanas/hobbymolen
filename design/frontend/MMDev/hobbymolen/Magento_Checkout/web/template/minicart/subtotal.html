@@ -1,0 +1,23 @@
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="subtotal row">
+    <div class="col-xs-8">
+        <p class="label">
+            <!-- ko i18n: 'Totaal inc. BTW' --><!-- /ko -->
+        </p>
+        <p class="note">
+            <span>
+                <!-- ko i18n: 'De prijs is exclusief verzendkosten' --><!-- /ko -->
+            </span>
+        </p>
+    </div>
+    <div class="col-xs-4">
+        <!-- ko foreach: elems -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>

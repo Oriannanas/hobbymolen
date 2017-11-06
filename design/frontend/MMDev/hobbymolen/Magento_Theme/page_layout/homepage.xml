@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="1column"/>
+    <referenceContainer name="page.wrapper">
+        <container name="home.category-list.wrapper" htmlTag="div" htmlClass="category-list-wrapper" after="main.content">
+        <container name="home.category-list.container" htmlTag="div" htmlClass="category-list-container container">
+            <container name="home.category-list.container.row" htmlTag="div" htmlClass="row">
+                <container name="home.category-list.container.row.col" htmlTag="div" htmlClass="col-xs-12">
+                    <block class="MMDev\CategoryWidget\Block\Widget\CategoryWidget" name="home.category-list">
+                        <arguments>
+                            <argument name="category_class" xsi:type="string">col-xs-6 col-md-4</argument>
+                            <argument name="image" xsi:type="string">image</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+            </container>
+        </container>
+    </referenceContainer>
+</layout>
