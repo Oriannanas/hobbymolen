@@ -1,0 +1,6 @@
+[submodule "code/magento-2-product-slider"]
+	path = code/magento-2-product-slider
+	url = https://github.com/mageplaza/magento-2-product-slider
+[submodule "code/Mageplaza/magento-2-product-slider"]
+	path = code/Mageplaza/magento-2-product-slider
+	url = https://github.com/mageplaza/magento-2-product-slider
