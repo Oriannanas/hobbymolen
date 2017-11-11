@@ -1,3 +1,3 @@
-[submodule "code/Mageplaza/magento-2-product-slider"]
-	path = code/Mageplaza/magento-2-product-slider
-	url = https://github.com/mageplaza/magento-2-product-slider
+[submodule "code/Firebear/ImportExport"]
+	path = code/FireBearStudio/importexportfree
+	url = https://github.com/firebearstudio/importexportfree
