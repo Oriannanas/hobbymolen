@@ -1,6 +1,6 @@
 <?php
 
-namespace Mmdev\CategoryImage\Observer\Category;
+namespace Mmdev\Categoryimage\Observer\Category;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -8,7 +8,7 @@ use Magento\Framework\Event\ObserverInterface;
 /**
  * Class ImageDataPrepare
  */
-class CategoryImageDataPrepare implements ObserverInterface {
+class CategoryimageDataPrepare implements ObserverInterface {
   /**
    * List of available cms page image attributes
    *
