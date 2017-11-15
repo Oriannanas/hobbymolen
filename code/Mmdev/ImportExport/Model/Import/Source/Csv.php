@@ -20,6 +20,11 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       'ARTIKEL.ACT_VRD[NR8]'  => 'qty',
     ];
   }
+  protected function getCategoryMapping() {
+    return [
+      "",
+    ];
+  }
 
   private function mapColumns($pColumnNames) {
     $lMapping = $this->getColumnMapping();
@@ -58,7 +63,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     //categories
     if(!isset($pRowData['categories'])){
       if(isset($pRowData['artikelomintnumomzgroepcodets6']));{
-        $lMain = ucwords(str_replace(' ', '', strtolower($pRowData['artikelomintnumomzgroepcodets6'])));
+        $lMain = "Default Category/".ucwords(str_replace(' ', '', strtolower($pRowData['artikelomintnumomzgroepcodets6'])));
         $lCategories = $lMain;
       }
       if(isset($pRowData[$this->cleanColumnName('artikelsuintnumsubgroepcodets6')]));{
