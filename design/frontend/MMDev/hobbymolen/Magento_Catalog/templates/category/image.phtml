@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+?>
+<?php
+    $_helper    = $this->helper('Magento\Catalog\Helper\Output');
+    $_category  = $block->getCurrentCategory();
+    $_imgHtml   = '';
+    $_imgUrl = $_category->getData('header_image');
+    if($_imgUrl){
+      $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+      $baseUrl = $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                         ->getStore()
+                         ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+      $_imgUrl = $baseUrl . 'catalog/category/mmdev/header_image/' . $_imgUrl;
+    } else {
+      $_imgUrl = $_category->getImageUrl();
+    }
+    if ($_imgUrl) {
+        $_imgHtml = '<div class="category-image"><img src="' . $_imgUrl . '" alt="' . $block->escapeHtml($_category->getName()) . '" title="' . $block->escapeHtml($_category->getName()) . '" class="image" /></div>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'header_image');
+        /* @escapeNotVerified */ echo $_imgHtml;
+    }
+?>

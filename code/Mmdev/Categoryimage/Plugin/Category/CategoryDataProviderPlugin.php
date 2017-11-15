@@ -67,8 +67,6 @@ class CategoryDataProviderPlugin
           $imageName = $image[0]['name'];
         }
       }
-
-      $basePath    = 'catalog/category/mmdev/' . $attributeCode;
       /** @var Store $store */
       $store = $this->storeManager->getStore();
       $baseUrl = $store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
