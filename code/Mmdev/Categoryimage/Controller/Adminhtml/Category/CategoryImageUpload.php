@@ -4,7 +4,7 @@ namespace Mmdev\Categoryimage\Controller\Adminhtml\Category;
 
 use Magento\Framework\Controller\ResultFactory;
 
-class CategoryimageUpload extends \Magento\Backend\App\Action {
+class CategoryImageUpload extends \Magento\Backend\App\Action {
 // […]
   /**
    * Image uploader

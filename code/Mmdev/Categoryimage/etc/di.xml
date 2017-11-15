@@ -2,18 +2,18 @@
     <type name="Magento\Catalog\Model\Category\DataProvider">
         <plugin name="mmdev_category_image_dataprovider_plugin" type="Mmdev\Categoryimage\Plugin\Category\CategoryDataProviderPlugin"/>
         <arguments>
-            <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryimageUpload</argument>
+            <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryImageUpload</argument>
         </arguments>
     </type>
-    <type name="Mmdev\Categoryimage\Controller\Adminhtml\Category\CategoryimageUpload">
+    <type name="Mmdev\Categoryimage\Controller\Adminhtml\Category\CategoryImageUpload">
         <arguments>
-            <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryimageUpload</argument>
+            <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryImageUpload</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Catalog\CategoryimageUpload" type="Magento\Catalog\Model\ImageUploader">
+    <virtualType name="Magento\Catalog\CategoryImageUpload" type="Magento\Catalog\Model\ImageUploader">
         <arguments>
-            <argument name="baseTmpPath" xsi:type="string">catalog/tmp/category</argument>
             <argument name="basePath" xsi:type="string">catalog/category</argument>
+            <argument name="baseTmpPath" xsi:type="string">catalog/tmp/category</argument>
             <argument name="allowedExtensions" xsi:type="array">
                 <item name="jpg" xsi:type="string">jpg</item>
                 <item name="jpeg" xsi:type="string">jpeg</item>

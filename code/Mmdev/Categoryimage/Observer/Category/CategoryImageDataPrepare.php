@@ -2,6 +2,7 @@
 
 namespace Mmdev\Categoryimage\Observer\Category;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 
@@ -19,9 +20,27 @@ class CategoryimageDataPrepare implements ObserverInterface {
   ];
 
   /** @var \Magento\Catalog\Model\ImageUploader  */
-  private   $imageUploader;
+  private $imageUploader;
 
+  public function __construct() {
+    $this->imageUploader = ObjectManager::getInstance()->get(
+      'Magento\Catalog\CategoryImageUpload'
+    );
+  }
 
+  /**
+   * Get image uploader
+   *
+   * @return \Magento\Catalog\Model\ImageUploader
+   *
+   * @deprecated
+   */
+  private function getImageUploader()
+  {
+    if ($this->imageUploader === null) {
+    }
+    return $this->imageUploader;
+  }
   /**
    * Prepare image data before save
    *
@@ -42,12 +61,13 @@ class CategoryimageDataPrepare implements ObserverInterface {
           $baseTmpPath = 'catalog/category/mmdev/tmp/' . $attributeName;
           $this->imageUploader->setBasePath($basePath);
           $this->imageUploader->setBaseTmpPath($baseTmpPath);
-
-          $this->imageUploader->moveFileFromTmp($attributeName);
+          foreach($data[$attributeName] as $image) {
+            $this->imageUploader->moveFileFromTmp($image['name']);
+          }
         }
       }
-      if (isset($data[$attributeName])) {
-        $category->setData($attributeName, $data[$attributeName]);
+      if (!empty($data[$attributeName])) {
+        $category->setData($attributeName, $data[$attributeName][0]['name']);
       }
     }
 

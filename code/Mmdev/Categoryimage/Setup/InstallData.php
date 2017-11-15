@@ -44,11 +44,12 @@ class InstallData implements InstallDataInterface
   {
     $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
     $eavSetup->addAttribute(
-      \Magento\Catalog\Model\Product::ENTITY,
+      \Magento\Catalog\Model\Category::ENTITY,
       'header_image',
       [
         'type' => 'varchar',
-        'backend' => '',
+        'backend' => 'Magento\Catalog\Model\Category\Attribute\Backend\Image',
+        'group' => 'General Information',
         'frontend' => '',
         'label' => 'Header Image',
         'input' => 'image',
