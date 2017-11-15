@@ -21,8 +21,14 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     ];
   }
   protected function getCategoryMapping() {
+    //todo check?
     return [
-      "",
+      "PAP162" => "Papier Technieken",
+      "SIER" => "Sieraden Maken",
+      "HOM109" => "Home Deco",
+      "BAS161" => "Basis Materialen",
+      "TEX163" => "Textiel Technieken",
+      "BOEKE3" => "Boeken Enzo",
     ];
   }
 
@@ -62,12 +68,21 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
 
     //categories
     if(!isset($pRowData['categories'])){
+      $lCategoryMapping = $this->getCategoryMapping();
       if(isset($pRowData['artikelomintnumomzgroepcodets6']));{
-        $lMain = "Default Category/".ucwords(str_replace(' ', '', strtolower($pRowData['artikelomintnumomzgroepcodets6'])));
+        if(isset($lCategoryMapping[$pRowData['artikelomintnumomzgroepcodets6']])){
+          $lMain = "Default Category/".$lCategoryMapping[$pRowData['artikelomintnumomzgroepcodets6']];
+        } else {
+          $lMain = $pRowData['artikelomintnumomzgroepcodets6'];
+        }
         $lCategories = $lMain;
       }
       if(isset($pRowData[$this->cleanColumnName('artikelsuintnumsubgroepcodets6')]));{
-        $lSub = ucwords(str_replace(' ', '', strtolower($pRowData['artikelsuintnumsubgroepcodets6'])));
+        if(isset($lCategoryMapping[$pRowData['artikelsuintnumsubgroepcodets6']])){
+          $lSub = $lCategoryMapping[$pRowData['artikelsuintnumsubgroepcodets6']];
+        } else {
+          $lSub = $pRowData['artikelsuintnumsubgroepcodets6'];
+        }
         $lCategories .= ','.$lMain.'/'.$lSub;
       }
       if(isset($pRowData[$this->cleanColumnName('artikeldiv_1ts30')]));{

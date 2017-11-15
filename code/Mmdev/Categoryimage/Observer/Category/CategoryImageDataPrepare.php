@@ -56,7 +56,7 @@ class CategoryimageDataPrepare implements ObserverInterface {
       if (isset($data[$attributeName]) && is_array($data[$attributeName])) {
         if (!empty($data[$attributeName]['delete'])) {
           $data[$attributeName] = null;
-        } else {
+        } else if(!$category->getData($attributeName)){
           $basePath    = 'catalog/category/mmdev/' . $attributeName;
           $baseTmpPath = 'catalog/category/mmdev/tmp/' . $attributeName;
           $this->imageUploader->setBasePath($basePath);
