@@ -1,0 +1,89 @@
+<?php
+/**
+ * Copyright � 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+/**
+ * @var $block \Magento\Reports\Block\Product\Viewed
+ */
+?>
+<?php
+if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())) {
+  $type            = 'widget-viewed';
+  $mode            = 'grid';
+  $productsliderId = $block->getUniqueSliderKey();
+  $type            = $type . '-' . $mode;
+
+  $image = 'recently_viewed_products_grid_content_widget';
+  $title = $block->getConfigValue('heading');
+  $items = $block->getProductCollection();
+}
+?>
+
+<?php if ($exist): ?>
+    <div class="mp-product-slider-block block widget block-products-list <?php echo $mode; ?>">
+        <div class="block-content">
+          <?php /* @escapeNotVerified */
+          echo '<!-- ' . $image . '-->' ?>
+            <div class="products-<?php /* @escapeNotVerified */
+            echo $mode; ?> <?php /* @escapeNotVerified */
+            echo $mode; ?>">
+                <ol class="product-items <?php /* @escapeNotVerified */
+                echo $type; ?>">
+                  <?php $iterator = 1; ?>
+                    <div class="owl-carousel" id="mageplaza-product-slider-<?php echo $productsliderId; ?>">
+                      <?php foreach ($items as $_item): ?>
+                        <?php
+                        /** @var \Mmdev\hobbymolen\Helper\Data $_helperGallery */
+                        $_helperGallery = $this->helper('Mmdev\hobbymolen\Helper\Data');
+                        $_helperGallery->addGallery($_item);
+                        $images = $_helperGallery->getGalleryImages($_item);
+                        if ($images instanceof \Magento\Framework\Data\Collection) {
+                          $i = 0;
+                          foreach ($images as $image) {
+                            if ($i++ == 2) {
+                              break;
+                            }
+                            $imageData = $image->getData();
+                            if (isset($imageData['media_type']) && $imageData['media_type'] == 'image') {
+                              $image = isset($imageData['large_image_url']) ? $imageData['large_image_url'] : '';
+                            }
+                          }
+                        }
+                        ?>
+                        <?php /* @escapeNotVerified */
+                        echo ($iterator++ == 1) ? '<li class="product-item product-slider"">' : '</li><li class="product-item product-slider"">' ?>
+                          <a href="<?php /* @escapeNotVerified */
+                          echo $block->getProductUrl($_item) ?>" class="product-item-photo">
+                              <div class="product-item-info">
+                                  <div class="product-image">
+                                      <img src="<?php echo $image ?>" alt="Featured item image">
+                                  </div>
+                                  <div class="product-item-details">
+                                      <strong class="mp-product-item-name">
+                                        <?php echo $block->escapeHtml($_item->getName()) ?>
+                                      </strong>
+                                  </div>
+                              </div>
+                          </a>
+                        <?php echo ($iterator == count($items) + 1) ? '</li>' : '' ?>
+                      <?php endforeach ?>
+                    </div>
+                </ol>
+            </div>
+        </div>
+        <script>
+            require([
+                'jquery',
+                'Mageplaza_Productslider/js/owl.carousel.min'
+            ], function ($) {
+                $('#mageplaza-product-slider-<?php echo $productsliderId;?>').owlCarousel(<?php echo($block->getAllOptions())?>);
+            });
+        </script>
+    </div>
+<?php endif; ?>
+
