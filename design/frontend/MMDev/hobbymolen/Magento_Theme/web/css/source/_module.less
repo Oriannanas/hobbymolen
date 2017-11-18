@@ -92,6 +92,7 @@
   .nav-sections {
     .lib-css(background, @navigation__background);
     padding-bottom: 40px;
+    margin-bottom: 60px!important;
     .navigation {
       font-family: @font-family-secondary-bold;
       font-weight: 400;
@@ -667,7 +668,7 @@
   }
 }
 
-.action.primary {
+.hobbymolen-button {
   background-color: rgb(21, 61, 57) !important;
   .box-shadow(rgb(21, 61, 57) 2px 2px 8px);
   .border-radius(0) !important;;
@@ -686,6 +687,17 @@
   }
 }
 
-.breadcrumbs {
+.action.primary {
+  .hobbymolen-button;
+}
 
+.shop-now{
+  border: 3px solid #000000;
+  border-top-width: 0;
+  padding: 20px;
+  text-align: center;
+  button{
+    .hobbymolen-button;
+    font-size: 30px;
+  }
 }

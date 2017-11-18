@@ -8,9 +8,8 @@
 <layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
     <update handle="1column"/>
-    <referenceContainer name="content">
-        <referenceBlock name="page.cms.title" remove="true"/>
-        <block class="Mageplaza\Productslider\Block\FeaturedProducts" name="product.slider.newproduct" template="productslider.phtml">
+    <referenceContainer name="page.top">
+        <block class="Mageplaza\Productslider\Block\FeaturedProducts" name="product.slider.newproduct" template="productslider.phtml" after="navigation.sections">
             <arguments>
                 <argument name="loop" xsi:type="string">1</argument>
                 <argument name="products_count" xsi:type="number">7</argument>
@@ -22,7 +21,12 @@
                 <argument name="itemsMobile" xsi:type="boolean">false</argument>
             </arguments>
         </block>
-        <block class="Magento\Framework\View\Element\Template" name="home.shopnow" template="Magento_theme::page/shopnow.phtml"/>
+        <container name="shop-now-container" htmlTag="div" htmlClass="container" after="product.slider.newproduct">
+            <block class="Magento\Framework\View\Element\Template" name="home.shopnow" template="Magento_theme::page/shopnow.phtml"/>
+        </container>
+    </referenceContainer>
+    <referenceContainer name="content">
+        <referenceBlock name="page.cms.title" remove="true"/>
     </referenceContainer>
     <referenceContainer name="page.wrapper">
         <container name="home.category-list.wrapper" htmlTag="div" htmlClass="category-list-wrapper"
