@@ -11,7 +11,7 @@
             <container name="category.category-list.container" htmlTag="div" htmlClass="category-list-container container">
                 <container name="category.category-list.container.row" htmlTag="div" htmlClass="row">
                     <container name="category.category-list.container.row.col" htmlTag="div" htmlClass="col-xs-12">
-                        <block class="MMDev\CategoryWidget\Block\Widget\CategoryWidget" name="category.category-list">
+                        <block class="Mmdev\CategoryWidget\Block\Widget\CategoryWidget" name="category.category-list">
                             <arguments>
                                 <argument name="category_class" xsi:type="string">col-xs-4 col-md-3</argument>
                                 <argument name="image" xsi:type="string">image</argument>
