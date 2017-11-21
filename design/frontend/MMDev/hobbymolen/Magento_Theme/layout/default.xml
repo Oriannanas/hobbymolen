@@ -14,8 +14,8 @@
                 </container>
                 <container name="header-wrapper-col-right" as="header-wrapper-col-right" label="Header wrapper col right" htmlTag="div" htmlClass="col-xs-6 header-column-right">
                     <container name="header-wrapper-col-right.content" label="Header wrapper col right content" htmlTag="div" htmlClass="header-content">
-                        <block class="Magento\Framework\View\Element\Template" name="header-account-button" template="Magento_theme::html/header/account-button.phtml" after="top.search"/>
-                        <block class="Magento\Framework\View\Element\Template"  name="header-wishlist-button" template="Magento_theme::html/header/wishlist-button.phtml" after="header-account-button"/>
+                        <block class="Magento\Framework\View\Element\Template" name="header-account-button" template="Magento_Theme::html/header/account-button.phtml" after="top.search"/>
+                        <block class="Magento\Framework\View\Element\Template"  name="header-wishlist-button" template="Magento_Theme::html/header/wishlist-button.phtml" after="header-account-button"/>
                     </container>
                 </container>
             </container>
@@ -51,16 +51,16 @@
             <referenceBlock name="footer_links" remove="true" />
             <container name="footer-row" as="footer-row" label="Page Footer row" htmlTag="div" htmlClass="row">
                 <container name="footer-col-logo" label="Page Footer col logo" htmlTag="div" htmlClass="col-xs-6 col-sm-4">
-                    <block class="Magento\Framework\View\Element\Template" name="footer-col-site-description.content" template="Magento_theme::html/footer/column-1.phtml"/>
+                    <block class="Magento\Framework\View\Element\Template" name="footer-col-site-description.content" template="Magento_Theme::html/footer/column-1.phtml"/>
                 </container>
                 <container name="footer-col-site-links" label="Page Footer site links" htmlTag="div" htmlClass="col-xs-6 col-sm-3">
-                    <block class="Magento\Framework\View\Element\Template" name="footer-col-site-links.content" template="Magento_theme::html/footer/column-2.phtml"/>
+                    <block class="Magento\Framework\View\Element\Template" name="footer-col-site-links.content" template="Magento_Theme::html/footer/column-2.phtml"/>
                 </container>
                 <container name="footer-col-customer-service" label="Page Footer col customer service" htmlTag="div" htmlClass="col-xs-6 col-sm-3">
-                    <block class="Magento\Framework\View\Element\Template" name="footer-col-customer-service.content" template="Magento_theme::html/footer/column-3.phtml"/>
+                    <block class="Magento\Framework\View\Element\Template" name="footer-col-customer-service.content" template="Magento_Theme::html/footer/column-3.phtml"/>
                 </container>
                 <container name="footer-col-follow-us" label="Page Footer col follow us" htmlTag="div" htmlClass="col-xs-6 col-sm-2">
-                    <block class="Magento\Framework\View\Element\Template" name="footer-col-follow-us.content" template="Magento_theme::html/footer/column-4.phtml"/>
+                    <block class="Magento\Framework\View\Element\Template" name="footer-col-follow-us.content" template="Magento_Theme::html/footer/column-4.phtml"/>
                 </container>
             </container>
             <referenceBlock name="form.subscribe" remove="true"/>
