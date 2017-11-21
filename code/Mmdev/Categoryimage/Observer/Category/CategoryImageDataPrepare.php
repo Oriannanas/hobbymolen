@@ -9,7 +9,7 @@ use Magento\Framework\Event\ObserverInterface;
 /**
  * Class ImageDataPrepare
  */
-class CategoryimageDataPrepare implements ObserverInterface {
+class CategoryImageDataPrepare implements ObserverInterface {
   /**
    * List of available cms page image attributes
    *
