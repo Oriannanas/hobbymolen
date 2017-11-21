@@ -22,7 +22,7 @@
             </arguments>
         </block>
         <container name="shop-now-container" htmlTag="div" htmlClass="container" after="product.slider.newproduct">
-            <block class="Magento\Framework\View\Element\Template" name="home.shopnow" template="Magento_theme::page/shopnow.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="home.shopnow" template="Magento_Theme::page/shopnow.phtml"/>
         </container>
     </referenceContainer>
     <referenceContainer name="content">
