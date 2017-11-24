@@ -24,27 +24,11 @@
         <container name="shop-now-container" htmlTag="div" htmlClass="container" after="product.slider.newproduct">
             <block class="Magento\Framework\View\Element\Template" name="home.shopnow" template="Magento_Theme::page/shopnow.phtml"/>
         </container>
-        <referenceBlock name="page.cms.title" remove="true"/>
-        <referenceBlock name="page.title" remove="true"/>
-    </referenceContainer>
-    <referenceContainer name="main.content">
-        <referenceBlock name="page.cms.title" remove="true"/>
-        <referenceBlock name="page.title" remove="true"/>
-    </referenceContainer>
-    <referenceContainer name="main.top">
-        <referenceBlock name="page.cms.title" remove="true"/>
-        <referenceBlock name="page.title" remove="true"/>
-    </referenceContainer>
-    <referenceContainer name="columns.top">
-        <referenceBlock name="page.cms.title" remove="true"/>
-        <referenceBlock name="page.title" remove="true"/>
-    </referenceContainer>
-    <referenceContainer name="content">
-        <referenceBlock name="page.cms.title" remove="true"/>
-        <referenceBlock name="page.title" remove="true"/>
     </referenceContainer>
     <referenceBlock name="page.cms.title" remove="true"/>
+    <referenceBlock name="page.main.title" remove="true"/>
     <referenceBlock name="page.title" remove="true"/>
+
     <referenceContainer name="page.wrapper">
         <container name="home.category-list.wrapper" htmlTag="div" htmlClass="category-list-wrapper"
                    after="main.content">
