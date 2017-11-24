@@ -32,11 +32,8 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       $pRowData['_attribute_set'] = 'Hobbymolen';
     }
 
-    if (!isset($pRowData['url_key']) && isset($pRowData['artikellng_omsts30'])) {
-      $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['artikellng_omsts30'])));
-    }
-    if (!isset($pRowData['url_key']) && isset($pRowData['short_description'])) {
-      $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['short_description'])));
+    if (!isset($pRowData['url_key']) && isset($pRowData['sku'])) {
+      $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['sku'])));
     }
 
     if (!isset($pRowData['image']) && isset($pRowData['atrikellev_nummerts20'])) {
