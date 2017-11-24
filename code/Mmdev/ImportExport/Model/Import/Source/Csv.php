@@ -33,7 +33,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     }
 
     if (!isset($pRowData['image']) && isset($pRowData['atrikellev_nummerts20'])) {
-      $pRowData['image'] = '/' . $pRowData['atrikellev_nummerts20'] . '.jpg';
+      $pRowData['image'] = '/' . $pRowData['atrikellev_nummerts20'] . '.png';
     }
 
     if (!isset($pRowData['additional_attributes']) && isset($pRowData['artikelreintnumrelatienaamts30'])) {
