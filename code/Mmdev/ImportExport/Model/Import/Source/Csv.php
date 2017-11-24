@@ -35,6 +35,9 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     if (!isset($pRowData['url_key']) && isset($pRowData['artikelkrt_omsts30'])) {
       $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['artikelkrt_omsts30'])));
     }
+    if (!isset($pRowData['url_key']) && isset($pRowData['name'])) {
+      $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['name'])));
+    }
 
     if (!isset($pRowData['image']) && isset($pRowData['atrikellev_nummerts20'])) {
       $pRowData['image'] = '/' . $pRowData['atrikellev_nummerts20'] . '.png';
