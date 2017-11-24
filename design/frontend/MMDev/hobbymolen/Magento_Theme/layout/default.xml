@@ -19,8 +19,6 @@
                     </container>
                 </container>
             </container>
-            <move element="top.search" destination="header-wrapper-col-right.content" before="-"/>
-            <move element="minicart" destination="header-wrapper-col-right.content" after="header-wishlist-button"/>
         </referenceBlock>
         <referenceBlock name="logo">
             <arguments>
@@ -28,6 +26,8 @@
                 <argument name="logo_img_height" xsi:type="number">236</argument>
             </arguments>
         </referenceBlock>
+        <move element="top.search" destination="header-wrapper-col-right.content" before="-"/>
+        <move element="minicart" destination="header-wrapper-col-right.content" after="header-wishlist-button"/>
         <move element="logo" destination="header-wrapper-col-left"/>
         <referenceBlock name="top.search">
             <referenceBlock name="advanced-search-link" remove="true"/>
