@@ -36,10 +36,6 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       $pRowData['_product_websites'] = 'base';
     }
 
-    if (!isset($pRowData['attribute_set_id'])) {
-      $pRowData['_product_websites'] = 'Hobbymolen';
-    }
-
     if (!isset($pRowData['visibility'])) {
       $pRowData['visibility'] = 'Catalogus, Zoeken';
     }
