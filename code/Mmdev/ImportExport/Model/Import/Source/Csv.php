@@ -50,8 +50,8 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       if (!empty($pRowData['artikelomintnumni4'])) ;
       {
         $lCategory = $pRowData['artikelomintnumni4'];
-        if (!empty($lCategoryMapping[$lCategory])) {
-          $lMain = "Default Category/" . $lCategoryMapping[$lCategory];
+        if (!empty($lCategoryMapping[(string)$lCategory])) {
+          $lMain = "Default Category/" . $lCategoryMapping[(string)$lCategory];
         } else {
           $lMain = $lCategory;
         }
@@ -61,8 +61,8 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       if (!empty($pRowData['artikelsuintnumni4'])) ;
       {
         $lSubCategory = $pRowData['artikelsuintnumni4'];
-        if (!empty($lSubCategoryMapping[$lSubCategory])) {
-          $lSub = $lSubCategoryMapping[$lSubCategory];
+        if (!empty($lSubCategoryMapping[(string)$lSubCategory])) {
+          $lSub = $lSubCategoryMapping[(string)$lSubCategory];
         } else {
           $lSub = $lSubCategory;
         }
