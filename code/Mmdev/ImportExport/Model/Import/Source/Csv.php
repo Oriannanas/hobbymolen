@@ -50,9 +50,9 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       if (!empty($pRowData['artikelomintnumni4'])) {
         $lCategory = $pRowData['artikelomintnumni4'];
         if (!empty($lCategoryMapping[(string)$lCategory])) {
-          $lMain = "Default Category,Default Category/" . $lCategoryMapping[(string)$lCategory];
+          $lMain = "Default Category,Default Category/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategoryMapping[(string)$lCategory]);
         } else {
-          $lMain = "Unsorted Categories,Unsorted Categories/" . $lCategory.'-temp';
+          $lMain = "Unsorted Categories,Unsorted Categories/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategory.'-temp');
         }
         $lCategories         = $lMain;
         $lSubCategoryMapping = $this->getSubCategoryMapping();
@@ -63,7 +63,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
           } else {
             $lSub = $lSubCategory.'-temp';
           }
-
+          $lSub = preg_replace('/[^a-zA-Z0-9 -]/', '', $lSub);
           if (!empty($lSub)) {
             error_log($lSub);
             $lCategories .= ',' . $lMain . '/' . $lSub;
@@ -78,7 +78,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
           }
         }
         error_log($lCategories);
-        $pRowData['categories'] = preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategories);
+        $pRowData['categories'] = $lCategories;
       }
     }
     return $pRowData;
