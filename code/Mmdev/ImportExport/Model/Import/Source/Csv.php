@@ -34,9 +34,6 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
 
     if (!isset($pRowData['url_key']) && isset($pRowData['sku'])) {
       $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['sku'])));
-      if(empty($pRowData['url_key'])){
-        $pRowData['url_key'] = uniqid();
-      }
     }
 
     if (!isset($pRowData['image']) && isset($pRowData['artikellev_nummerts20'])) {
@@ -56,7 +53,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         if (!empty($lCategoryMapping[(string)$lCategory])) {
           $lMain = "Default Category/" . $lCategoryMapping[(string)$lCategory];
         } else {
-          $lMain = $lCategory;
+          $lMain = $lCategory.'-dummy';
         }
         $lCategories = $lMain;
       }
@@ -67,7 +64,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         if (!empty($lSubCategoryMapping[(string)$lSubCategory])) {
           $lSub = $lSubCategoryMapping[(string)$lSubCategory];
         } else {
-          $lSub = $lSubCategory;
+          $lSub = $lSubCategory.'-dummy';
         }
         $lCategories .= ',' . $lMain . '/' . $lSub;
       }
