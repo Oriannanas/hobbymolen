@@ -78,7 +78,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
           }
         }
         error_log($lCategories);
-        $pRowData['categories'] = $lCategories;
+        $pRowData['categories'] = preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategories);
       }
     }
     return $pRowData;
