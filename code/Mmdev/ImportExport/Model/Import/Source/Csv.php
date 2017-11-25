@@ -32,6 +32,17 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       $pRowData['_attribute_set'] = 'Hobbymolen';
     }
 
+    if (!isset($pRowData['visibility'])) {
+      $pRowData['visibility'] = 'Catalog, Search';
+    }
+
+    if (!isset($pRowData['product_online'])) {
+      $pRowData['product_online'] = '1';
+    }
+    if (!isset($pRowData['weight'])) {
+      $pRowData['weight'] = '1';
+    }
+
     if (!isset($pRowData['url_key']) && isset($pRowData['sku'])) {
       $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['sku'])));
     }
