@@ -68,11 +68,12 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         }
         $lCategories .= ',' . $lMain . '/' . $lSub;
       }
-      if (!empty($pRowData['artikeldiv_1ts30'])) ;
+      if (!empty(trim($pRowData['artikeldiv_1ts30']))) ;
       {
         $lSubSub     = ucwords(str_replace(' ', '', strtolower($pRowData['artikeldiv_1ts30'])));
         $lCategories .= ',' . $lMain . '/' . $lSub . '/' . $lSubSub;
       }
+      error_log($lCategories);
       $pRowData['categories'] = $lCategories;
     }
 
