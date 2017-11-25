@@ -105,7 +105,7 @@
       }
       > ul {
         padding: 5px 20px;
-        width: 100%;
+        min-width: 100%;
         display: table;
         > li {
           color: #000000;
@@ -116,28 +116,7 @@
           > a {
             padding: 0 !important;
           }
-        }
-      }
-      li {
-        & > .level-top {
-          line-height: 1.5em;
-        }
-        &.active, &.has-active {
-          > .level-top {
-            border: 0;
-          }
-        }
-        &.level0.parent {
-          ul.submenu {
-            //overflow: hidden !important;
-          }
-        }
-        > ul.submenu {
-          top: 50px !important;
-          background-color: fade(@base-color, 97%);
-          .box-shadow(rgba(10, 10, 10, 1) 2px 2px 8px);
-          overflow: visible;
-          &:before {
+          >ul.submenu:before {
             position: absolute;
             top: -25px;
             left: 50%;
@@ -150,7 +129,26 @@
             border-right: 25px solid transparent;
             border-bottom: 25px solid fade(@base-color, 97%);
           }
-          .active, .has-active {
+        }
+      }
+      li {
+        & > .level-top {
+          line-height: 1.5em;
+        }
+        &.active, &.has-active {
+          > .level-top {
+            border: 0;
+          }
+        }
+        > ul.submenu {
+          top: 50px !important;
+          background-color: fade(@base-color, 97%);
+          .box-shadow(rgba(10, 10, 10, 1) 2px 2px 8px);
+          overflow: visible;
+          li:hover{
+            background-color: fade(lighten(@base-color, 15%), 97%);
+          }
+          li.active, li.has-active {
             > a {
               border: 0;
             }
@@ -158,14 +156,14 @@
         }
         ul.submenu {
           max-height: 0; //for smooth and sexy transition
-          transition: max-height 0.5s ease 0s;
+          transition: max-height 1s ease;
           font-weight: 400;
           text-transform: uppercase;
           min-width: 100%;
-          //display: block !important;
-          width: 100%;
+          overflow: hidden;
           border: 0;
           li {
+            position: relative;
             bottom: 0;
             text-align: left;
             margin-bottom: 0;
@@ -192,9 +190,9 @@
               background-color: transparent !important;
             }
             ul.submenu{
-              position: relative;
-              left: auto!important;
-              box-shadow: none;
+              position: absolute;
+              top: 0!important;
+              left: 105%;
               li{
                 padding: 10px 10px 0;
                 margin:0;
