@@ -74,7 +74,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       }
       if (!empty($pRowData['artikeldiv_1ts30'])) ;
       {
-        $lSubSub = ucwords(preg_replace('/[^a-zA-Z0-9-]/', '', str_replace(' ', '', strtolower($pRowData['artikeldiv_1ts30']))));
+        $lSubSub = ucfirst(preg_replace('/[^a-zA-Z0-9-]/', '', str_replace(' ', '', strtolower($pRowData['artikeldiv_1ts30']))));
         if (!empty($lSubSub)) {
           error_log($lSubSub);
           $lCategories .= ',' . $lMain . '/' . $lSub . '/' . $lSubSub;
