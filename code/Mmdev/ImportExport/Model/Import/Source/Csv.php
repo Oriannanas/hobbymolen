@@ -45,7 +45,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     }
 
     //categories
-    if (!!empty($pRowData['categories'])) {
+    if (!empty($pRowData['categories'])) {
       $lCategoryMapping = $this->getCategoryMapping();
       if (!empty($pRowData['artikelomintnumni4'])) ;
       {
