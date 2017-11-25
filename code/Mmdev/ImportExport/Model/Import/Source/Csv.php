@@ -64,14 +64,21 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         if (!empty($lSubCategoryMapping[(string)$lSubCategory])) {
           $lSub = $lSubCategoryMapping[(string)$lSubCategory];
         } else {
-          $lSub = $lSubCategory.'-subcategory';
+          $lSub = $lSubCategory . '-subcategory';
         }
-        $lCategories .= ',' . $lMain . '/' . $lSub;
+
+        if (!empty($lSub)) {
+          error_log($lSub);
+          $lCategories .= ',' . $lMain . '/' . $lSub;
+        }
       }
-      if (!empty(trim($pRowData['artikeldiv_1ts30']))) ;
+      if (!empty($pRowData['artikeldiv_1ts30'])) ;
       {
-        $lSubSub     = ucwords(str_replace(' ', '', strtolower($pRowData['artikeldiv_1ts30'])));
-        $lCategories .= ',' . $lMain . '/' . $lSub . '/' . $lSubSub;
+        $lSubSub = ucwords(str_replace(' ', '', strtolower($pRowData['artikeldiv_1ts30'])));
+        if (!empty($lSubSub)) {
+          error_log($lSubSub);
+          $lCategories .= ',' . $lMain . '/' . $lSub . '/' . $lSubSub;
+        }
       }
       error_log($lCategories);
       $pRowData['categories'] = $lCategories;
