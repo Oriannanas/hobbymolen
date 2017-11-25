@@ -36,8 +36,8 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['sku'])));
     }
 
-    if (!isset($pRowData['image']) && isset($pRowData['atrikellev_nummerts20'])) {
-      $pRowData['image'] = '/' . $pRowData['atrikellev_nummerts20'] . '.png';
+    if (!isset($pRowData['image']) && isset($pRowData['artikellev_nummerts20'])) {
+      $pRowData['image'] = '/' . $pRowData['artikellev_nummerts20'] . '.png';
     }
 
     if (!isset($pRowData['additional_attributes']) && isset($pRowData['artikelreintnumrelatienaamts30'])) {
@@ -45,7 +45,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     }
 
     //categories
-    if (!empty($pRowData['categories'])) {
+    if (empty($pRowData['categories'])) {
       $lCategoryMapping = $this->getCategoryMapping();
       if (!empty($pRowData['artikelomintnumni4'])) ;
       {
