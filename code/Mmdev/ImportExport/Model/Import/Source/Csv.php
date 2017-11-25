@@ -34,6 +34,9 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
 
     if (!isset($pRowData['url_key']) && isset($pRowData['sku'])) {
       $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['sku'])));
+      if(empty($pRowData['url_key'])){
+        $pRowData['url_key'] = uniqid();
+      }
     }
 
     if (!isset($pRowData['image']) && isset($pRowData['artikellev_nummerts20'])) {
