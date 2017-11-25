@@ -47,43 +47,40 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     //categories
     if (empty($pRowData['categories'])) {
       $lCategoryMapping = $this->getCategoryMapping();
-      if (!empty($pRowData['artikelomintnumni4'])) ;
-      {
+      if (!empty($pRowData['artikelomintnumni4'])) {
         $lCategory = $pRowData['artikelomintnumni4'];
         if (!empty($lCategoryMapping[(string)$lCategory])) {
           $lMain = "Default Category/" . $lCategoryMapping[(string)$lCategory];
         } else {
-          $lMain = "Unsorted Categories/".$lCategory;
+          $lMain = "Unsorted Categories/" . $lCategory;
         }
-        $lCategories = $lMain;
-      }
-      $lSubCategoryMapping = $this->getSubCategoryMapping();
-      if (!empty($pRowData['artikelsuintnumni4'])) ;
-      {
-        $lSubCategory = $pRowData['artikelsuintnumni4'];
-        if (!empty($lSubCategoryMapping[(string)$lSubCategory])) {
-          $lSub = $lSubCategoryMapping[(string)$lSubCategory];
-        } else {
-          $lSub = $lSubCategory;
-        }
+        $lCategories         = $lMain;
+        $lSubCategoryMapping = $this->getSubCategoryMapping();
+        if (!empty($pRowData['artikelsuintnumni4'])) {
+          $lSubCategory = $pRowData['artikelsuintnumni4'];
+          if (!empty($lSubCategoryMapping[(string)$lSubCategory])) {
+            $lSub = $lSubCategoryMapping[(string)$lSubCategory];
+          } else {
+            $lSub = $lSubCategory;
+          }
 
-        if (!empty($lSub)) {
-          error_log($lSub);
-          $lCategories .= ',' . $lMain . '/' . $lSub;
+          if (!empty($lSub)) {
+            error_log($lSub);
+            $lCategories .= ',' . $lMain . '/' . $lSub;
+          }
+          if (!empty($pRowData['artikeldiv_1ts30'])) ;
+          {
+            $lSubSub = ucfirst(preg_replace('/[^a-zA-Z0-9-]/', '', str_replace(' ', '', strtolower($pRowData['artikeldiv_1ts30']))));
+            if (!empty($lSubSub)) {
+              error_log($lSubSub);
+              $lCategories .= ',' . $lMain . '/' . $lSub . '/' . $lSubSub;
+            }
+          }
         }
+        error_log($lCategories);
+        $pRowData['categories'] = $lCategories;
       }
-      if (!empty($pRowData['artikeldiv_1ts30'])) ;
-      {
-        $lSubSub = ucfirst(preg_replace('/[^a-zA-Z0-9-]/', '', str_replace(' ', '', strtolower($pRowData['artikeldiv_1ts30']))));
-        if (!empty($lSubSub)) {
-          error_log($lSubSub);
-          $lCategories .= ',' . $lMain . '/' . $lSub . '/' . $lSubSub;
-        }
-      }
-      error_log($lCategories);
-      $pRowData['categories'] = $lCategories;
     }
-
     return $pRowData;
   }
 
