@@ -33,7 +33,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     }
 
     if (!isset($pRowData['visibility'])) {
-      $pRowData['visibility'] = 'Catalog, Search';
+      $pRowData['visibility'] = 'Catalogus, Zoeken';
     }
 
     if (!isset($pRowData['product_online'])) {
