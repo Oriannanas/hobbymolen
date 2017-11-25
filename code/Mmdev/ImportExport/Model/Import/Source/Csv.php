@@ -50,11 +50,13 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       if (!empty($pRowData['artikelomintnumni4'])) {
         $lCategory = $pRowData['artikelomintnumni4'];
         if (!empty($lCategoryMapping[(string)$lCategory])) {
-          $lMain = "Default Category,Default Category/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategoryMapping[(string)$lCategory]);
+          $lCategories = "Default Category";
+          $lMain = "Default Category/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategoryMapping[(string)$lCategory]);
         } else {
-          $lMain = "Unsorted Categories,Unsorted Categories/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategory.'-temp');
+          $lCategories = "Unsorted Category";
+          $lMain = "Unsorted Categories/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategory.'-temp');
         }
-        $lCategories         = $lMain;
+        $lCategories     .= ','.$lMain;
         $lSubCategoryMapping = $this->getSubCategoryMapping();
         if (!empty($pRowData['artikelsuintnumni4'])) {
           $lSubCategory = $pRowData['artikelsuintnumni4'];
