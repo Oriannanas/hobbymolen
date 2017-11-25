@@ -53,7 +53,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
           $lCategories = "Default Category";
           $lMain = "Default Category/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategoryMapping[(string)$lCategory]);
         } else {
-          $lCategories = "Unsorted Category";
+          $lCategories = "Unsorted Categories";
           $lMain = "Unsorted Categories/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategory.'-temp');
         }
         $lCategories     .= ','.$lMain;
