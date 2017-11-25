@@ -52,7 +52,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         if (!empty($lCategoryMapping[(string)$lCategory])) {
           $lMain = "Default Category,Default Category/" . $lCategoryMapping[(string)$lCategory];
         } else {
-          $lMain = "Unsorted Categories,Unsorted Categories/" . $lCategory;
+          $lMain = "Unsorted Categories,Unsorted Categories/" . $lCategory.'-temp';
         }
         $lCategories         = $lMain;
         $lSubCategoryMapping = $this->getSubCategoryMapping();
@@ -61,7 +61,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
           if (!empty($lSubCategoryMapping[(string)$lSubCategory])) {
             $lSub = $lSubCategoryMapping[(string)$lSubCategory];
           } else {
-            $lSub = $lSubCategory;
+            $lSub = $lSubCategory.'-temp';
           }
 
           if (!empty($lSub)) {
