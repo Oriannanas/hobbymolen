@@ -45,12 +45,12 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     }
 
     //categories
-    if (!isset($pRowData['categories'])) {
+    if (!!empty($pRowData['categories'])) {
       $lCategoryMapping = $this->getCategoryMapping();
-      if (isset($pRowData['artikelomintnumni4'])) ;
+      if (!empty($pRowData['artikelomintnumni4'])) ;
       {
         $lCategory = $pRowData['artikelomintnumni4'];
-        if (isset($lCategoryMapping[$lCategory])) {
+        if (!empty($lCategoryMapping[$lCategory])) {
           $lMain = "Default Category/" . $lCategoryMapping[$lCategory];
         } else {
           $lMain = $lCategory;
@@ -58,17 +58,17 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         $lCategories = $lMain;
       }
       $lSubCategoryMapping = $this->getSubCategoryMapping();
-      if (isset($pRowData['artikelsuintnumni4'])) ;
+      if (!empty($pRowData['artikelsuintnumni4'])) ;
       {
         $lSubCategory = $pRowData['artikelsuintnumni4'];
-        if (isset($lSubCategoryMapping[$lSubCategory])) {
+        if (!empty($lSubCategoryMapping[$lSubCategory])) {
           $lSub = $lSubCategoryMapping[$lSubCategory];
         } else {
           $lSub = $lSubCategory;
         }
         $lCategories .= ',' . $lMain . '/' . $lSub;
       }
-      if (isset($pRowData['artikeldiv_1ts30'])) ;
+      if (!empty($pRowData['artikeldiv_1ts30'])) ;
       {
         $lSubSub     = ucwords(str_replace(' ', '', strtolower($pRowData['artikeldiv_1ts30'])));
         $lCategories .= ',' . $lMain . '/' . $lSub . '/' . $lSubSub;
