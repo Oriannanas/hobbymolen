@@ -116,18 +116,21 @@
           > a {
             padding: 0 !important;
           }
-          >ul.submenu:before {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            .translate(-50%, 0);
-            content: '';
-            display: block;
-            width: 0;
-            height: 0;
-            border-left: 25px solid transparent;
-            border-right: 25px solid transparent;
-            border-bottom: 25px solid fade(@base-color, 97%);
+          > ul.submenu {
+            top: 40px!important;
+            &:before {
+              position: absolute;
+              top: -25px;
+              left: 50%;
+              .translate(-50%, 0);
+              content: '';
+              display: block;
+              width: 0;
+              height: 0;
+              border-left: 25px solid transparent;
+              border-right: 25px solid transparent;
+              border-bottom: 25px solid fade(@base-color, 97%);
+            }
           }
         }
       }
@@ -140,28 +143,20 @@
             border: 0;
           }
         }
-        > ul.submenu {
-          top: 50px !important;
+        ul.submenu {
+          .transition(all 0.2s ease 0.2s);
+          ul.submenu{
+            .transition(all 0.2s ease 0s);
+          }
           background-color: fade(@base-color, 97%);
           .box-shadow(rgba(10, 10, 10, 1) 2px 2px 8px);
-          overflow: visible;
-          li:hover{
-            background-color: fade(lighten(@base-color, 15%), 97%);
-          }
-          li.active, li.has-active {
-            > a {
-              border: 0;
-            }
-          }
-        }
-        ul.submenu {
-          max-height: 0; //for smooth and sexy transition
-          transition: max-height 1s ease;
           font-weight: 400;
           text-transform: uppercase;
           min-width: 100%;
-          overflow: hidden;
           border: 0;
+          opacity:0;
+          display: block;
+          z-index: -1;
           li {
             position: relative;
             bottom: 0;
@@ -199,12 +194,19 @@
               }
             }
           }
-        }
-        &:hover {
-          > ul.submenu {
-            max-height: 4000px; //i hope this is large enough, fallback for browsers that do not support "vh"
-            max-height: 100vh;
+          li:hover{
+            background-color: fade(lighten(@base-color, 15%), 97%);
           }
+          li.active, li.has-active {
+            > a {
+              border: 0;
+            }
+          }
+        }
+        &:hover > ul.submenu, ul.submenu:hover{
+          opacity: 1;
+          z-index: 1;
+          .transition(all 0.2s ease 0s);
         }
       }
     }
