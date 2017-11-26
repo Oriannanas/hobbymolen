@@ -18,8 +18,8 @@ $title      = $block->getTitle() ? __($block->getTitle()) : 'Categorieen';
       <?php
       $i = 1;
       foreach ($categories as $key => $category):?>
-          <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
-              <div class="<?= $this->getData('category_class') ?: "col-xs-6 col-md-4" ?> category-list-item">
+          <div class="<?= $this->getData('category_class') ?: "col-xs-6 col-md-4" ?> category-list-item">
+              <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
                   <div class="category category-<?= $i++ ?> <?= strtolower(str_replace(' ', '-', $category->getName())) ?>">
                       <div class="category-background">
                         <?php if ($canShowImg):
@@ -36,8 +36,8 @@ $title      = $block->getTitle() ? __($block->getTitle()) : 'Categorieen';
                           <span class="category-title"><?php echo $block->escapeHtml($category->getName()) ?></span>
                       </div>
                   </div>
-              </div>
-          </a>
+              </a>
+          </div>
       <?php endforeach; ?>
     </div>
 </div>
