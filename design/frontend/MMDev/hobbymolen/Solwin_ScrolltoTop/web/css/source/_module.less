@@ -1,0 +1,37 @@
+.border-radius(@stuff) {
+  -webkit-border-radius: @stuff;
+  -moz-border-radius: @stuff;
+  border-radius: @stuff;
+}
+
+.box-shadow(@stuff) {
+  -webkit-box-shadow: @stuff;
+  -moz-box-shadow: @stuff;
+  box-shadow: @stuff;
+}
+
+#scroll-to-top{
+  a{
+    -webkit-transition: background 0.2s;
+    -moz-transition: background 0.2s;
+    -ms-transition: background 0.2s;
+    -o-transition: background 0.2s;
+    transition: background 0.2s;
+    height:50px;
+    width:50px;
+    font-family: @font-family-tertiary-regular;
+    font-size: 19px;
+    .border-radius(50%);
+    .box-shadow(rgb(138, 158, 156) 2px 2px 8px);
+    border:none;
+    bottom: 45px;
+    right: 35px!important;
+    &:hover{
+      color: #333333;
+      background-color: rgb(234, 233, 227);
+    }
+    span{
+
+    }
+  }
+}
