@@ -51,14 +51,30 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['sku'])));
     }
 
+    $importImageFolder = realpath(dirname(__FILE__).'/../../../../../../..').'/'.'pub/media/import';
+
     if (!isset($pRowData['image']) && isset($pRowData['artikellev_nummerts20'])) {
-      $lImageName = preg_replace('/[^a-zA-Z0-9._-]/', '', $pRowData['artikellev_nummerts20']) . '.png';
-      if(file_exists($_SERVER['DOCUMENT_ROOT'].'/pub/media/import/' .$lImageName)){
-        $pRowData['image'] = '/' . $lImageName;
+      if($pRowData['artikellev_nummerts20'] == '#303496') {
+        error_log('hallo daar');
+      }
+      $lImageName = preg_replace('/[^a-zA-Z0-9._-]/', '', $pRowData['artikellev_nummerts20']);
+      $lImageNameLarge = $lImageName . '_1200x1200.png';
+      if(file_exists($importImageFolder. '/' .$lImageNameLarge)){
+        $pRowData['image'] = '/' . $lImageNameLarge;
+        $pRowData['base_image'] = '/' . $lImageNameLarge;
+      }
+      $lImageNameMedium = $lImageName . '_324x324.png';
+      if(file_exists($importImageFolder.'/' .$lImageNameMedium)){
+        $pRowData['small_image'] = '/' . $lImageNameMedium;
+      }
+      $lImageNameSmall = $lImageName . '_135x135.png';
+      if(file_exists($importImageFolder.'/' . $lImageNameSmall)){
+        $pRowData['thumbnail_image'] = '/' . $lImageNameSmall;
       }
     }
 
     if (!isset($pRowData['additional_attributes']) && isset($pRowData['artikelreintnumrelatienaamts30'])) {
+      $pRowData['manufacturer'] = $pRowData['artikelreintnumrelatienaamts30'];
       $pRowData['additional_attributes'] = 'manufacturer=' . $pRowData['artikelreintnumrelatienaamts30'];
     }
 
@@ -123,18 +139,20 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
        */
       "4"   => "Boetseren",
       "186" => "Chenille & Pompons",
+      "9"   => "Decoratie Materiaal",
       "175" => "Foam",
       "18"  => "Hout",
-      "24"  => "Kinder Hobby",
+      "14"  => "Gereedschap",
       "34"  => "Karton",
+      "24"  => "Kinder Hobby",
       "29"  => "Lijm Produkten",
       "87"  => "Metaal & Aluminium",
-      "173" => "Watten Vormen",
+      "173" => "Wattenvormen",
       "242" => "Raffia",
       "45"  => "Styropor",
       "93"  => "Transparante Vormen",
       "162" => "Veren",
-      ""    => "Ogen & Neuzen",
+//      ""    => "Ogen & Neuzen",
 
       /**
        * Boeken Enzo
@@ -150,13 +168,13 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
        * Sieraden Maken
        */
       "165" => "Bedels & Hangers",
-      //""  => "Cabochons",
-      "14"  => "Gereedschap",
+      "275"  => "Cabochons",
+//      "14"  => "Gereedschap",
       "174" => "Ketting",
       "269" => "Kralen per stuk",
       "27"  => "Kralen verpakt",
-      "152" => "Pakketten of sets",
       "58"  => "Onderdelen",
+      "152" => "Pakketten of sets",
       "96"  => "Rijgbenodigdheden",
       "184" => "Swarovski",
       "267" => "Veters",
@@ -164,11 +182,12 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       /**
        * Home Deco
        */
-      "9"   => "Decoratie Materiaal",
+//      "9"   => "Decoratie Materiaal",
       "99"  => "Decoupage",
       //"14" => "Gereedschap", duplicate
-      //""=> "Onbeschilderde dragers",
+      "274"=> "Onbeschilderde dragers",
       "138" => "Sjablonen",
+      "111" => "Textuek Verharders",
       "94"  => "Verf",
 
       /**
@@ -196,15 +215,15 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
        * Textiel Technieken
        */
       "85"  => "Borduurgaren",
-      //"" => "Decoratie",
       "6"   => "Brei- & Haakgaren",
+//      "9" => "Decoratie materiaal",
       "10"  => "Diversen",
       "142" => "Garen",
       "88" => "Gereedschappen textiel",
       //"" => "Haak Katoen",
-      //"" => "Hot-Fix",
+      "114" => "Hot-Fix",
       "44"  => "Lapjes Stof",
-      //"" => "Vilt Pakketten",
+      "150" => "Vilt Pakketten",
       "123" => "Vilt Syntetisch",
       "121" => "Vilt Wol",
     ];
