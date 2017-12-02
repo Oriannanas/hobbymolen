@@ -52,7 +52,10 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     }
 
     if (!isset($pRowData['image']) && isset($pRowData['artikellev_nummerts20'])) {
-//      $pRowData['image'] = '/' . preg_replace('/[^a-zA-Z0-9-]/', '', $pRowData['artikellev_nummerts20']) . '.png';
+      $lImageName = preg_replace('/[^a-zA-Z0-9._-]/', '', $pRowData['artikellev_nummerts20']) . '.png';
+      if(file_exists($_SERVER['DOCUMENT_ROOT'].'/pub/media/import/' .$lImageName)){
+        $pRowData['image'] = '/' . $lImageName;
+      }
     }
 
     if (!isset($pRowData['additional_attributes']) && isset($pRowData['artikelreintnumrelatienaamts30'])) {
@@ -66,10 +69,10 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         $lCategory = $pRowData['artikelomintnumni4'];
         if (!empty($lCategoryMapping[(string)$lCategory])) {
           $lCategories = "Default Category";
-          $lMain = "Default Category/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategoryMapping[(string)$lCategory]);
+          $lMain = "Default Category/" . $lCategoryMapping[(string)$lCategory];
         } else {
           $lCategories = "Unsorted Categories";
-          $lMain = "Unsorted Categories/" . preg_replace('/[^a-zA-Z0-9 -]/', '', $lCategory.'-temp');
+          $lMain = "Unsorted Categories/" . $lCategory.'-temp';
         }
         $lCategories     .= ','.$lMain;
         $lSubCategoryMapping = $this->getSubCategoryMapping();
@@ -103,7 +106,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
 
   protected function getCategoryMapping() {
     return [
-      "3"   => "Boeken Enzo",
+      "8"   => "Boeken Enzo",
       "58"  => "Sieraden Maken",
       "109" => "Home Deco",
       "161" => "Basis Materialen",
@@ -142,7 +145,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       "271" => "Sieraden Maken",
       "272" => "Textiel Technieken",
       "47"  => "Tekenen & Schilderen",
-
+      "256" => "Tijdschriften",
       /**
        * Sieraden Maken
        */
@@ -184,6 +187,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       "124" => "Origami",
       "167" => "Papier",
       "39"  => "Ponsen",
+      "63" => "Scrapbook Materialen",
       "92"  => "Stansen & Mallen",
       "42"  => "Stempelen",
       "43"  => "Stickervellen",
@@ -196,7 +200,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       "6"   => "Brei- & Haakgaren",
       "10"  => "Diversen",
       "142" => "Garen",
-      //"" => "Gereedschappen textiel",
+      "88" => "Gereedschappen textiel",
       //"" => "Haak Katoen",
       //"" => "Hot-Fix",
       "44"  => "Lapjes Stof",
