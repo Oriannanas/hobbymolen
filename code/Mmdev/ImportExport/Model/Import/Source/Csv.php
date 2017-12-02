@@ -236,6 +236,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       $lRow = $this->mapColumns($lRow);
     }
     $this->_currRow++;
+    error_log($this->_currRow);
 
     return $lRow;
   }
