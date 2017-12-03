@@ -71,8 +71,8 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     }
 
     if (!isset($pRowData['additional_attributes']) && isset($pRowData['artikelreintnumrelatienaamts30'])) {
-      $pRowData['manufacturer'] = $pRowData['artikelreintnumrelatienaamts30'];
-      $pRowData['additional_attributes'] = 'manufacturer=' . $pRowData['artikelreintnumrelatienaamts30'];
+      $pRowData['relatie'] = $pRowData['artikelreintnumrelatienaamts30'];
+      $pRowData['additional_attributes'] = 'relatie=' . $pRowData['artikelreintnumrelatienaamts30'];
     }
 
     //categories
