@@ -54,9 +54,6 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     $importImageFolder = realpath(dirname(__FILE__).'/../../../../../../..').'/'.'pub/media/import';
 
     if (!isset($pRowData['image']) && isset($pRowData['artikellev_nummerts20'])) {
-      if($pRowData['artikellev_nummerts20'] == '#303496') {
-        error_log('hallo daar');
-      }
       $lImageName = preg_replace('/[^a-zA-Z0-9._-]/', '', $pRowData['artikellev_nummerts20']);
       $lImageNameLarge = $lImageName . '_1200x1200.png';
       if(file_exists($importImageFolder. '/' .$lImageNameLarge)){
