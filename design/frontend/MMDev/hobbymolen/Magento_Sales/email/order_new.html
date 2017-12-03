@@ -23,8 +23,10 @@
         <td>
             <p class="greeting">{{trans "%customer_name," customer_name=$order.getCustomerName()}}</p>
             <p>
-                Bedankt voor uw bestelling bij{{trans "%store_name" store_name=$store.getFrontendName()}}.
+                Bedankt voor uw bestelling bij {{trans "%store_name" store_name=$store.getFrontendName()}}.
+                <br>
                 Wanneer de bestelling klaar staat krijgt u het definitieve factuur toegestuurd.
+                <br>
                 U kunt de status van uw bestelling bekijken door {{trans '<a href="%account_url">in te loggen met uw account</a>.' account_url=$this.getUrl($store,'customer/account/',[_nosid:1]) |raw}}
             </p>
             <p>
