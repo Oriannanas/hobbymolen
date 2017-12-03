@@ -257,6 +257,9 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       'ARTIKEL.KRT_OMS[TS30]' => 'name',
       'ARTIKEL.LNG_OMS[TS80]' => 'short_description',//maybe description?
       'ARTIKEL.VRK_PR_I[NR8]' => 'price',
+      'ARTIKEL.VRK_PR[NR8]' => 'price_excl',
+      'ARTIKEL.ADV_VRK_PR_I[NR8]' => 'msrp',
+      'ARTIKEL.ADV_VRK_PR[NR8]' => 'msrp_excl',
       'ARTIKEL.ACT_VRD[NR8]'  => 'qty',
     ];
   }
