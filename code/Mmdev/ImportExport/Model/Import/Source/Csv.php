@@ -47,8 +47,8 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       $pRowData['weight'] = '1';
     }
 
-    if (!isset($pRowData['url_key']) && isset($pRowData['sku'])) {
-      $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['sku'])));
+    if (!isset($pRowData['url_key']) && isset($pRowData['artikelcodets6'])) {
+      $pRowData['url_key'] = preg_replace('/[^a-z0-9-]/', '', strtolower(str_replace(' ', '-', $pRowData['artikelcodets6'])));
     }
 
     $importImageFolder = realpath(dirname(__FILE__).'/../../../../../../..').'/'.'pub/media/import';
