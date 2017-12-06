@@ -30,13 +30,13 @@
     .category-title {
       position: absolute;
       color: #ffffff;
-      font-family: @font-family-tertiary-regular;
+      font-family: 'Caveat-Regular', sans-serif;
       font-size: 30px;
       top: 50%;
       .translate(0, -50%);
-      left: 12%;
-      right: 12%;
       text-align: center;
+      left: 50%;
+      max-width: 100%;
     }
   }
 
@@ -80,6 +80,16 @@
     }
   }
 
+  .page-products{
+    .category-content {
+      .category-title {
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
   .page-products{
     .category-content {
       .category-title {

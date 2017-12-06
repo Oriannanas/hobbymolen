@@ -70,9 +70,25 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       }
     }
 
-    if (!isset($pRowData['additional_attributes']) && isset($pRowData['artikelreintnumrelatienaamts30'])) {
-      $pRowData['relatie'] = $pRowData['artikelreintnumrelatienaamts30'];
-      $pRowData['additional_attributes'] = 'relatie=' . $pRowData['artikelreintnumrelatienaamts30'];
+    if (!isset($pRowData['additional_attributes'])) {
+      $pRowData['additional_attributes'] = [];
+      if (isset($pRowData['artikelreintnumrelatienaamts30'])) {
+        $pRowData['relatie']               = $pRowData['artikelreintnumrelatienaamts30'];
+        $pRowData['additional_attributes'][] = 'relatie=' . $pRowData['artikelreintnumrelatienaamts30'];
+      }
+      if (isset($pRowData['artikelvrk_prnr8'])) {
+        $pRowData['price_excl']               = (float)$pRowData['artikelvrk_prnr8'];
+        $pRowData['additional_attributes'] = 'price_excl=' . $pRowData['price_excl'];
+      }
+      if (isset($pRowData['artikeladvvrk_pr_inr8'])) {
+        $pRowData['msrp_incl']               = (float)$pRowData['artikeladvvrk_pr_inr8'];
+        $pRowData['additional_attributes'] = 'msrp_incl=' . $pRowData['msrp_incl'];
+      }
+      if (isset($pRowData['artikeladvvrk_pr_nr8'])) {
+        $pRowData['msrp_excl']               = (float)$pRowData['artikeladvvrk_pr_nr8'];
+        $pRowData['additional_attributes'] = 'msrp_excl=' . $pRowData['msrp_excl'];
+      }
+      $pRowData['additional_attributes'] = implode(',', $pRowData['additional_attributes']);
     }
 
     //categories
@@ -257,9 +273,6 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       'ARTIKEL.KRT_OMS[TS30]' => 'name',
       'ARTIKEL.LNG_OMS[TS80]' => 'short_description',//maybe description?
       'ARTIKEL.VRK_PR_I[NR8]' => 'price',
-      'ARTIKEL.VRK_PR[NR8]' => 'price_excl',
-      'ARTIKEL.ADV_VRK_PR_I[NR8]' => 'msrp',
-      'ARTIKEL.ADV_VRK_PR[NR8]' => 'msrp_excl',
       'ARTIKEL.ACT_VRD[NR8]'  => 'qty',
     ];
   }
