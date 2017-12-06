@@ -53,8 +53,8 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
 
     $importImageFolder = realpath(dirname(__FILE__).'/../../../../../../..').'/'.'pub/media/import';
 
-    if (!isset($pRowData['image']) && isset($pRowData['artikellev_nummerts20'])) {
-      $lImageName = preg_replace('/[^a-zA-Z0-9._-]/', '', $pRowData['artikellev_nummerts20']);
+    if (!isset($pRowData['image']) && isset($pRowData['sku'])) {
+      $lImageName = preg_replace('/[^a-zA-Z0-9._-]/', '', $pRowData['sku']);
       $lImageNameLarge = $lImageName . '_1200x1200.png';
       if(file_exists($importImageFolder. '/' .$lImageNameLarge)){
         $pRowData['image'] = '/' . $lImageNameLarge;
@@ -269,7 +269,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
 
   protected function getColumnMapping() {
     return [
-      'ARTIKEL.CODE[TS6]'     => 'sku',
+      'ARTIKEL.LEV_NUMMER[TS20]'     => 'sku',
       'ARTIKEL.KRT_OMS[TS30]' => 'name',
       'ARTIKEL.LNG_OMS[TS80]' => 'short_description',//maybe description?
       'ARTIKEL.VRK_PR_I[NR8]' => 'price',
