@@ -97,7 +97,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         error_log('no excl price');
       }
       if (isset($pRowData['artikeladv_vrk_pr_inr8'])) {
-        $pRowData['msrp_incl']             = (float)$pRowData['artikeladvvrk_pr_inr8'];
+        $pRowData['msrp_incl']             = (float)$pRowData['artikeladv_vrk_pr_inr8'];
         $pRowData['additional_attributes'] = 'msrp_incl=' . $pRowData['msrp_incl'];
       } else{
         error_log('no incl adv');
