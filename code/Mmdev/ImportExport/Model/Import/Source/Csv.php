@@ -263,7 +263,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
 
   protected function _getNextRow() {
     $lRow = parent::_getNextRow();
-    if ($this->key() === 0) {
+    if ($this->key() <= 0) {
 //current rowData is used for column mapping, interfere here to allow our favorite webshop's wonky export to be used with magento's import
       $lRow = $this->mapColumns($lRow);
     }
