@@ -48,10 +48,9 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     }
 
     if (!isset($pRowData['url_key'])) {
-      if (isset($pRowData['short_description'])) {
-        $pRowData['url_key'] = $pRowData['short_description'];
-      } else if (isset($pRowData['sku'])) {
-        $pRowData['url_key'] = $pRowData['sku'];
+      $pRowData['url_key'] = $pRowData['sku'];
+      if(isset($pRowData['artikelcodets6'])){
+        $pRowData['url_key'] .= '-' . $pRowData['artikelcodets6'];
       }
       $pRowData['url_key'] = preg_replace('/[^a-z0-9_-]/', '', strtolower(str_replace([' ', '.'], ['-', '_'], $pRowData['url_key'])));
     }
