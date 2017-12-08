@@ -56,21 +56,29 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       $pRowData['url_key'] = preg_replace('/[^a-z0-9_-]/', '', strtolower(str_replace([' ', '.'], ['-', '_'], $pRowData['url_key'])));
     }
 
-    $importImageFolder = realpath(dirname(__FILE__).'/../../../../../../..').'/'.'pub/media/import';
+    if (!isset($pRowData['tax_class_name']) && isset($pRowData['artikelbtintnumbtwbtintnumni4'])) {
+      if ($pRowData['artikelbtintnumbtwbtintnumni4'] == 4) {
+        $pRowData['tax_class_name'] = 'Hoog';
+      } else if ($pRowData['artikelbtintnumbtwbtintnumni4'] == 2) {
+        $pRowData['tax_class_name'] = 'Laag';
+      }
+    }
+
+    $importImageFolder = realpath(dirname(__FILE__) . '/../../../../../../..') . '/' . 'pub/media/import';
 
     if (!isset($pRowData['image']) && isset($pRowData['sku'])) {
-      $lImageName = preg_replace('/[^a-zA-Z0-9._-]/', '', $pRowData['sku']);
+      $lImageName      = preg_replace('/[^a-zA-Z0-9._-]/', '', $pRowData['sku']);
       $lImageNameLarge = $lImageName . '_1200x1200.png';
-      if(file_exists($importImageFolder. '/' .$lImageNameLarge)){
-        $pRowData['image'] = '/' . $lImageNameLarge;
+      if (file_exists($importImageFolder . '/' . $lImageNameLarge)) {
+        $pRowData['image']      = '/' . $lImageNameLarge;
         $pRowData['base_image'] = '/' . $lImageNameLarge;
       }
       $lImageNameMedium = $lImageName . '_324x324.png';
-      if(file_exists($importImageFolder.'/' .$lImageNameMedium)){
+      if (file_exists($importImageFolder . '/' . $lImageNameMedium)) {
         $pRowData['small_image'] = '/' . $lImageNameMedium;
       }
       $lImageNameSmall = $lImageName . '_135x135.png';
-      if(file_exists($importImageFolder.'/' . $lImageNameSmall)){
+      if (file_exists($importImageFolder . '/' . $lImageNameSmall)) {
         $pRowData['thumbnail_image'] = '/' . $lImageNameSmall;
       }
     }
@@ -78,19 +86,19 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
     if (!isset($pRowData['additional_attributes'])) {
       $pRowData['additional_attributes'] = [];
       if (isset($pRowData['artikelreintnumrelatienaamts30'])) {
-        $pRowData['relatie']               = $pRowData['artikelreintnumrelatienaamts30'];
+        $pRowData['relatie']                 = $pRowData['artikelreintnumrelatienaamts30'];
         $pRowData['additional_attributes'][] = 'relatie=' . $pRowData['artikelreintnumrelatienaamts30'];
       }
       if (isset($pRowData['artikelvrk_prnr8'])) {
-        $pRowData['price_excl']               = (float)$pRowData['artikelvrk_prnr8'];
+        $pRowData['price_excl']            = (float)$pRowData['artikelvrk_prnr8'];
         $pRowData['additional_attributes'] = 'price_excl=' . $pRowData['price_excl'];
       }
       if (isset($pRowData['artikeladvvrk_pr_inr8'])) {
-        $pRowData['msrp_incl']               = (float)$pRowData['artikeladvvrk_pr_inr8'];
+        $pRowData['msrp_incl']             = (float)$pRowData['artikeladvvrk_pr_inr8'];
         $pRowData['additional_attributes'] = 'msrp_incl=' . $pRowData['msrp_incl'];
       }
       if (isset($pRowData['artikeladvvrk_pr_nr8'])) {
-        $pRowData['msrp_excl']               = (float)$pRowData['artikeladvvrk_pr_nr8'];
+        $pRowData['msrp_excl']             = (float)$pRowData['artikeladvvrk_pr_nr8'];
         $pRowData['additional_attributes'] = 'msrp_excl=' . $pRowData['msrp_excl'];
       }
       $pRowData['additional_attributes'] = implode(',', $pRowData['additional_attributes']);
@@ -103,19 +111,19 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         $lCategory = $pRowData['artikelomintnumni4'];
         if (!empty($lCategoryMapping[(string)$lCategory])) {
           $lCategories = "Default Category";
-          $lMain = "Default Category/" . $lCategoryMapping[(string)$lCategory];
+          $lMain       = "Default Category/" . $lCategoryMapping[(string)$lCategory];
         } else {
           $lCategories = "Unsorted Categories";
-          $lMain = "Unsorted Categories/" . $lCategory.'-temp';
+          $lMain       = "Unsorted Categories/" . $lCategory . '-temp';
         }
-        $lCategories     .= ','.$lMain;
+        $lCategories         .= ',' . $lMain;
         $lSubCategoryMapping = $this->getSubCategoryMapping();
         if (!empty($pRowData['artikelsuintnumni4'])) {
           $lSubCategory = $pRowData['artikelsuintnumni4'];
           if (!empty($lSubCategoryMapping[(string)$lSubCategory])) {
             $lSub = $lSubCategoryMapping[(string)$lSubCategory];
           } else {
-            $lSub = $lSubCategory.'-temp';
+            $lSub = $lSubCategory . '-temp';
           }
           $lSub = preg_replace('/[^a-zA-Z0-9 -]/', '', $lSub);
           if (!empty($lSub)) {
@@ -135,6 +143,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
         $pRowData['categories'] = $lCategories;
       }
     }
+
     return $pRowData;
   }
 
@@ -170,7 +179,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       "45"  => "Styropor",
       "93"  => "Transparante Vormen",
       "162" => "Veren",
-//      ""    => "Ogen & Neuzen",
+      //      ""    => "Ogen & Neuzen",
 
       /**
        * Boeken Enzo
@@ -186,8 +195,8 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
        * Sieraden Maken
        */
       "165" => "Bedels & Hangers",
-      "275"  => "Cabochons",
-//      "14"  => "Gereedschap",
+      "275" => "Cabochons",
+      //      "14"  => "Gereedschap",
       "174" => "Ketting",
       "269" => "Kralen per stuk",
       "27"  => "Kralen verpakt",
@@ -200,10 +209,10 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       /**
        * Home Deco
        */
-//      "9"   => "Decoratie Materiaal",
+      //      "9"   => "Decoratie Materiaal",
       "99"  => "Decoupage",
       //"14" => "Gereedschap", duplicate
-      "274"=> "Onbeschilderde dragers",
+      "274" => "Onbeschilderde dragers",
       "138" => "Sjablonen",
       "111" => "Textuek Verharders",
       "94"  => "Verf",
@@ -224,7 +233,7 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       "124" => "Origami",
       "167" => "Papier",
       "39"  => "Ponsen",
-      "63" => "Scrapbook Materialen",
+      "63"  => "Scrapbook Materialen",
       "92"  => "Stansen & Mallen",
       "42"  => "Stempelen",
       "43"  => "Stickervellen",
@@ -234,10 +243,10 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
        */
       "85"  => "Borduurgaren",
       "6"   => "Brei- & Haakgaren",
-//      "9" => "Decoratie materiaal",
+      //      "9" => "Decoratie materiaal",
       "10"  => "Diversen",
       "142" => "Garen",
-      "88" => "Gereedschappen textiel",
+      "88"  => "Gereedschappen textiel",
       //"" => "Haak Katoen",
       "114" => "Hot-Fix",
       "44"  => "Lapjes Stof",
@@ -274,11 +283,11 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
 
   protected function getColumnMapping() {
     return [
-      'ARTIKEL.LEV_NUMMER[TS20]'     => 'sku',
-      'ARTIKEL.KRT_OMS[TS30]' => 'name',
-      'ARTIKEL.LNG_OMS[TS80]' => 'short_description',//maybe description?
-      'ARTIKEL.VRK_PR_I[NR8]' => 'price',
-      'ARTIKEL.ACT_VRD[NR8]'  => 'qty',
+      'ARTIKEL.LEV_NUMMER[TS20]' => 'sku',
+      'ARTIKEL.KRT_OMS[TS30]'    => 'name',
+      'ARTIKEL.LNG_OMS[TS80]'    => 'short_description',//maybe description?
+      'ARTIKEL.VRK_PR_I[NR8]'    => 'price',
+      'ARTIKEL.ACT_VRD[NR8]'     => 'qty',
     ];
   }
 
