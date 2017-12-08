@@ -87,20 +87,29 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       if (isset($pRowData['artikelreintnumrelatienaamts30'])) {
         $pRowData['relatie']                 = $pRowData['artikelreintnumrelatienaamts30'];
         $pRowData['additional_attributes'][] = 'relatie=' . $pRowData['artikelreintnumrelatienaamts30'];
+      } else {
+        error_log('no relation');
       }
       if (isset($pRowData['artikelvrk_prnr8'])) {
         $pRowData['price_excl']            = (float)$pRowData['artikelvrk_prnr8'];
         $pRowData['additional_attributes'] = 'price_excl=' . $pRowData['price_excl'];
+      } else {
+        error_log('no excl price');
       }
       if (isset($pRowData['artikeladvvrk_pr_inr8'])) {
         $pRowData['msrp_incl']             = (float)$pRowData['artikeladvvrk_pr_inr8'];
         $pRowData['additional_attributes'] = 'msrp_incl=' . $pRowData['msrp_incl'];
+      } else{
+        error_log('no incl adv');
       }
       if (isset($pRowData['artikeladvvrk_pr_nr8'])) {
         $pRowData['msrp_excl']             = (float)$pRowData['artikeladvvrk_pr_nr8'];
         $pRowData['additional_attributes'] = 'msrp_excl=' . $pRowData['msrp_excl'];
+      } else{
+        error_log('no excl adv');
       }
       $pRowData['additional_attributes'] = implode(',', $pRowData['additional_attributes']);
+      error_log('additional attributes: ' . $pRowData['additional_attributes']);
     }
 
     //categories
@@ -126,19 +135,16 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
           }
           $lSub = preg_replace('/[^a-zA-Z0-9 -]/', '', $lSub);
           if (!empty($lSub)) {
-            error_log($lSub);
             $lCategories .= ',' . $lMain . '/' . $lSub;
           }
           if (!empty($pRowData['artikeldiv_1ts30'])) ;
           {
             $lSubSub = ucfirst(preg_replace('/[^a-zA-Z0-9-]/', '', str_replace(' ', '', strtolower($pRowData['artikeldiv_1ts30']))));
             if (!empty($lSubSub)) {
-              error_log($lSubSub);
               $lCategories .= ',' . $lMain . '/' . $lSub . '/' . $lSubSub;
             }
           }
         }
-        error_log($lCategories);
         $pRowData['categories'] = $lCategories;
       }
     }
