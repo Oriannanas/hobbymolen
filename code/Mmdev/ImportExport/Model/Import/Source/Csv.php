@@ -92,19 +92,19 @@ class Csv extends \Magento\ImportExport\Model\Import\Source\Csv {
       }
       if (isset($pRowData['artikelvrk_prijsnr8'])) {
         $pRowData['price_excl']            = (float)$pRowData['artikelvrk_prijsnr8'];
-        $pRowData['additional_attributes'] = 'price_excl=' . $pRowData['price_excl'];
+        $pRowData['additional_attributes'][] = 'price_excl=' . $pRowData['price_excl'];
       } else {
         error_log('no excl price');
       }
       if (isset($pRowData['artikeladv_vrk_pr_inr8'])) {
         $pRowData['msrp_incl']             = (float)$pRowData['artikeladv_vrk_pr_inr8'];
-        $pRowData['additional_attributes'] = 'msrp_incl=' . $pRowData['msrp_incl'];
+        $pRowData['additional_attributes'][] = 'msrp_incl=' . $pRowData['msrp_incl'];
       } else{
         error_log('no incl adv');
       }
       if (isset($pRowData['artikeladv_vrk_prijsnr8'])) {
         $pRowData['msrp_excl']             = (float)$pRowData['artikeladv_vrk_prijsnr8'];
-        $pRowData['additional_attributes'] = 'msrp_excl=' . $pRowData['msrp_excl'];
+        $pRowData['additional_attributes'][] = 'msrp_excl=' . $pRowData['msrp_excl'];
       } else{
         error_log('no excl adv');
       }
