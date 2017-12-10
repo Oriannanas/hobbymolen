@@ -41,3 +41,9 @@ $title      = $block->getTitle() ? __($block->getTitle()) : 'Categorieen';
       <?php endforeach; ?>
     </div>
 </div>
+
+<script>
+    require(['jquery', 'jquery.matchHeight'], function ($) {
+        $(document).find('.category-list-item').matchHeight();
+    });
+</script>

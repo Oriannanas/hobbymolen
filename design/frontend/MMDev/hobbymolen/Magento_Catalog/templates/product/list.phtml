@@ -184,6 +184,10 @@ $_helper            = $this->helper('Magento\Catalog\Helper\Output');
         </script>
   <?php endif; ?>
     <script>
+        require(['jquery', 'jquery.matchHeight'], function ($) {
+            $(document).find('.product-item').matchHeight();
+        });
+
         require(['jquery', 'jquery/ui'], function ($) {
             $(document).on('click touch', '.qty-min:not([disabled])', function () {
                 var input = $(this).parent().find('input').first();

@@ -20,7 +20,7 @@ $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
 <nav class="navigation" data-action="navigation">
     <img src="<?php echo $this->getViewFileUrl('images/borders/border-1.svg'); ?>" class="navigation-border" alt="Navigation top border" />
     <ul>
-<!--    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>-->
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
         <li class="level0 level-top">
             <a class="level-top" href="<?php echo $lBaseUrl; ?>">
                 Home
@@ -36,3 +36,16 @@ $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
     </ul>
     <img src="<?php echo $this->getViewFileUrl('images/borders/border-1.svg'); ?>" class="navigation-border" alt="Navigation bottom border"/>
 </nav>
+
+<script>
+    require(['jquery'], function ($) {
+        $(document).on('click', '.nav-toggle', function(){
+            $(document).find('.nav-sections').first().toggleClass('active');
+        });
+        $(document).on('click', '.nav-sections.active li > span', function(e){
+            e.preventDefault();
+            $(this).closest('li').toggleClass('open');
+            return false;
+        });
+    });
+</script>
