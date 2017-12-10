@@ -1,3 +1,13 @@
 <div class="shop-now">
 <button>Shop nu!</button>
 </div>
+
+<script>
+require(['jquery'], function ($) {
+    $(document).on('click', '.shop-now', function(e){
+        $('html, body').animate({
+            scrollTop: $('#category-list').offset().top
+        }, 500);
+    });
+});
+</script>

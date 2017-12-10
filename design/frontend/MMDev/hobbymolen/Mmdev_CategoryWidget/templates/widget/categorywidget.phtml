@@ -8,7 +8,7 @@ $categories = $this->getCategoryCollection();
 $canShowImg = $this->canShowImage();
 $title      = $block->getTitle() ? __($block->getTitle()) : 'Categorieen';
 ?>
-<div class="category-list">
+<div id="category-list" class="category-list">
   <?php if ($title): ?>
       <h2 class="block-title category-border">
           <strong><?php echo $block->escapeHtml($title) ?></strong>

@@ -92,7 +92,7 @@
   .nav-sections {
     .lib-css(background, @navigation__background);
     padding-bottom: 40px;
-    margin-bottom: 0px!important;
+    margin-bottom: 60px!important;
     .navigation {
       font-family: @font-family-secondary-bold;
       font-weight: 400;
@@ -442,6 +442,7 @@
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
   .nav-sections {
+    margin-bottom: 0!important;
     -webkit-overflow-scrolling: touch;
     height: auto;
     left: auto;
@@ -621,6 +622,10 @@
     }
   }
 
+  .column.main {
+    min-height: 50px;
+  }
+
   .footer {
     h3 {
       margin-top: 0;
@@ -734,7 +739,6 @@
 }
 
 .breadcrumbs {
-  margin-top:60px;
   ul.items {
     border: 6px solid transparent;
     padding: 5px 40px;
@@ -790,3 +794,4 @@
     font-size: 30px;
   }
 }
+
