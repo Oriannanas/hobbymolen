@@ -40,7 +40,14 @@
         <div class="pages">
             <strong class="label pages-label" id="paging-label"><?php /* @escapeNotVerified */ echo __('Page') ?></strong>
             <ul class="items pages-items" aria-labelledby="paging-label">
-
+              <?php if (!$block->isFirstPage()): ?>
+                  <li class="item pages-item-previous">
+                    <?php $text = $block->getAnchorTextForPrevious() ? $block->getAnchorTextForPrevious() : '';?>
+                      <a class="<?php /* @escapeNotVerified */ echo $text ? 'link ' : 'action '?> previous" href="<?php /* @escapeNotVerified */ echo $block->getPreviousPageUrl() ?>" title="<?php /* @escapeNotVerified */ echo $text ? $text : __('Previous') ?>">
+                          <span><img src="<?php echo $this->getViewFileUrl('images/icons/arrow_left_icon.svg'); ?>"></span>
+                      </a>
+                  </li>
+              <?php endif;?>
               <?php if ($block->getFrameStart() > 2): ?>
                   <li class="item">
                       <a class="page first" href="<?php /* @escapeNotVerified */ echo $block->getFirstPageUrl() ?>">
@@ -83,6 +90,15 @@
                     </a>
                 </li>
                 <?php endif;?>
+
+              <?php if (!$block->isLastPage()): ?>
+                  <li class="item pages-item-next">
+                    <?php $text = $block->getAnchorTextForNext() ? $block->getAnchorTextForNext() : '';?>
+                      <a class="<?php /* @escapeNotVerified */ echo $text ? 'link ' : 'action '?> next" href="<?php /* @escapeNotVerified */ echo $block->getNextPageUrl() ?>" title="<?php /* @escapeNotVerified */ echo $text ? $text : __('Next') ?>">
+                          <span><img src="<?php echo $this->getViewFileUrl('images/icons/arrow_right_icon.svg'); ?>"></span>
+                      </a>
+                  </li>
+              <?php endif;?>
             </ul>
         </div>
   <?php endif; ?>
