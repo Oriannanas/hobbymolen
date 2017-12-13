@@ -26,6 +26,7 @@
                 <argument name="logo_img_height" xsi:type="number">236</argument>
             </arguments>
         </referenceBlock>
+        <move element="breadcrumbs" destination="main.content" before="-"/>
         <move element="top.search" destination="header-wrapper-col-right.content" before="-"/>
         <move element="minicart" destination="header-wrapper-col-right.content" after="header-wishlist-button"/>
         <move element="logo" destination="header-wrapper-col-left"/>
