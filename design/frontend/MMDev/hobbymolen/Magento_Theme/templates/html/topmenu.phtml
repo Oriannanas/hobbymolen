@@ -39,6 +39,21 @@ $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
 
 <script>
     require(['jquery'], function ($) {
+        $(document).find('.nav-sections li:not(.open) a').on('touchstart', function(e){
+            if($( window ).width() > 768) {
+                e.preventDefault();
+                e.stopPropagation();
+                var li = $(this).closest('li');
+                if(li.hasClass('level0')){
+                    $(document).find('.nav-sections li').removeClass('open');
+                }
+                if(li.hasClass('level1')){
+                    $(document).find('.nav-sections li.level1').removeClass('open');
+                }
+                li.addClass('open');
+                return false;
+            }
+        });
         $(document).on('click', '.nav-toggle', function(){
             $(document).find('.nav-sections').first().toggleClass('active');
         });

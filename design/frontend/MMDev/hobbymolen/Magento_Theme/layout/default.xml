@@ -10,9 +10,9 @@
         <referenceContainer name="header.panel.wrapper" remove="true"/>
         <referenceBlock name="header-wrapper">
             <container name="header-wrapper-row" as="header-wrapper-row" label="Header wrapper row" htmlTag="div" htmlClass="row header-row">
-                <container name="header-wrapper-col-left" as="header-wrapper-col-left" label="Header wrapper col left" htmlTag="div" htmlClass="col-xs-6 header-column-left">
+                <container name="header-wrapper-col-left" as="header-wrapper-col-left" label="Header wrapper col left" htmlTag="div" htmlClass="col-sm-6 header-column-left">
                 </container>
-                <container name="header-wrapper-col-right" as="header-wrapper-col-right" label="Header wrapper col right" htmlTag="div" htmlClass="col-xs-6 header-column-right ">
+                <container name="header-wrapper-col-right" as="header-wrapper-col-right" label="Header wrapper col right" htmlTag="div" htmlClass="col-sm-6 header-column-right ">
                     <container name="header-wrapper-col-right.content" label="Header wrapper col right content" htmlTag="div" htmlClass="header-content">
                         <block class="Magento\Framework\View\Element\Template" name="header-account-button" template="Magento_Theme::html/header/account-button.phtml" after="top.search"/>
                         <block class="Magento\Framework\View\Element\Template"  name="header-wishlist-button" template="Magento_Theme::html/header/wishlist-button.phtml" after="header-account-button"/>

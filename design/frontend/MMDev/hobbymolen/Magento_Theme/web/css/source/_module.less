@@ -92,7 +92,7 @@
   .nav-sections {
     .lib-css(background, @navigation__background);
     padding-bottom: 40px;
-    margin-bottom: 60px!important;
+    margin-bottom: 0px!important;
     .navigation {
       font-family: @font-family-secondary-bold;
       font-weight: 400;
@@ -145,7 +145,7 @@
         }
         ul.submenu {
           .transition(all 0.2s ease 0.2s);
-          ul.submenu{
+          ul.submenu {
             .transition(all 0.2s ease 0s);
           }
           background-color: fade(@base-color, 97%);
@@ -154,7 +154,7 @@
           text-transform: uppercase;
           min-width: 100%;
           border: 0;
-          opacity:0;
+          opacity: 0;
           display: block;
           visibility: hidden;
           li {
@@ -184,17 +184,17 @@
               padding: 0 0 0 20px;
               background-color: transparent !important;
             }
-            ul.submenu{
+            ul.submenu {
               position: absolute;
-              top: 0!important;
+              top: 0 !important;
               left: 105%;
-              li{
+              li {
                 padding: 10px 10px 0;
-                margin:0;
+                margin: 0;
               }
             }
           }
-          li:hover{
+          li:hover {
             background-color: fade(lighten(@base-color, 15%), 97%);
           }
           li.active, li.has-active {
@@ -203,10 +203,12 @@
             }
           }
         }
-        &:hover > ul.submenu, ul.submenu:hover{
-          opacity: 1;
-          visibility: visible;
-          .transition(all 0.2s ease 0s);
+        &:hover, &.open {
+          > ul.submenu, ul.submenu:hover {
+            opacity: 1;
+            visibility: visible;
+            .transition(all 0.2s ease 0s);
+          }
         }
       }
     }
@@ -371,20 +373,22 @@
     }
   }
 
-  .header {
-  }
   .header-row {
     margin-top: 20px;
-  }
-  .header-column-left {
   }
   .header-column-right {
     padding-top: 20px;
   }
-  .header-content {
+  .header-column-right, .header-column-left{
     .clearfix;
+  }
+  .header-content {
     float: right;
     max-width: 100%;
+    padding-bottom: 20px;
+     > *{
+       .clearfix;
+     }
   }
   .header-element {
     height: 32px;
@@ -398,7 +402,6 @@
     padding: 3px 8px;
     width: 33px;
   }
-
   //
   //  Widgets
   //  ---------------------------------------------
@@ -439,8 +442,16 @@
     }
   }
 }
-
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .nav-toggle:before{
+    content: ' ';
+    margin-top: 18px;
+    width: 30px;
+    height:40px;
+    background-image: @icon_hamburger;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
   .nav-sections {
     margin-bottom: 0!important;
     -webkit-overflow-scrolling: touch;
@@ -456,6 +467,9 @@
     }
 
     .navigation {
+      a {
+        color: #000000;
+      }
       > ul > li {
         display: block;
         border: 0;
@@ -489,12 +503,32 @@
           }
         }
         ul.submenu {
+          font-size: 15px;
+          padding: 5px 10px;
+          position: relative;
           max-height: 0;
           border: none;
           -webkit-box-shadow: none;
           -moz-box-shadow: none;
           box-shadow: none;
-          padding: 0;
+          li {
+            &:first-child{
+              margin-top:0;
+            }
+            a{
+              padding-left: 20px !important;
+            }
+            &:hover{
+              background-color: transparent;
+            }
+            ul.submenu {
+              padding: 5px 10px;
+              position: relative;
+              li {
+                padding: 0 5px;
+              }
+            }
+          }
         }
         &.open > ul.submenu {
           max-height: 10000px;
@@ -512,8 +546,9 @@
       }
     }
 
-    .level0 {
-      font-size:22px;
+    li.level0 {
+      min-height: 37px;
+      font-size:18px;
       position: relative;
       a:after{
         display: none!important;
@@ -532,6 +567,12 @@
   }
 }
 
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = 321) {
+  .block-search .control{
+    max-width: 107px;
+  }
+}
 //
 //  Desktop
 //  _____________________________________________
@@ -616,7 +657,7 @@
 
   .logo {
     margin: -8px auto 25px 0;
-
+    max-height: 50vh;
     img {
       max-height: inherit;
     }
@@ -710,8 +751,6 @@
       letter-spacing: 1.5px;
     }
   }
-  .header-column-left {
-  }
   .header-column-right {
     padding-top: 120px;
   }
@@ -741,6 +780,7 @@
 .breadcrumbs {
   ul.items {
     border: 6px solid transparent;
+    margin-top:40px;
     padding: 5px 40px;
     .border-image(url("@{baseDir}images/borders/breadcrumb_border.svg") 11%);
   }

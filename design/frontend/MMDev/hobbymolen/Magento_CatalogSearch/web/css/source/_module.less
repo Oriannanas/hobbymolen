@@ -78,6 +78,9 @@
         }
 
         input {
+            .lib-input-placeholder(transparent);
+            border: 0;
+            background-color: transparent;
             left: -300%;
             margin: 15px 0;
             position: absolute;
@@ -197,18 +200,44 @@
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .block-search {
+        margin-left:0;
         .block-content {
             margin-bottom: 0;
+        }
+        .field.search{
+            position: relative;
+        }
+        .label{
+            position: absolute;
+            right: 0;
+            z-index: 1000;
+        }
+        input, .label.active + .control input {
+            position: relative;
+        }
+        input{
+            left: 0;
+            margin: 0;
+        }
+        .control{
+            max-width:160px;//fallback
+            max-width: 50vw;
+            border-top:0;
+            margin: 0;
+            padding: 0;
         }
     }
 }
 
-.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
     .block-search {
-        //margin-top: @indent__s;
+        .block-content .control{
+            max-width:107px;//fallback
+            max-width: 34vw;
+        }
     }
 }
-
 //
 //  Desktop
 //  _____________________________________________
@@ -238,12 +267,9 @@
         }
 
         input {
-            .lib-input-placeholder(transparent);
             margin: 0;
             padding-right: 35px;
             position: static;
-            border:0;
-            background-color: transparent;
         }
 
         .action.search {

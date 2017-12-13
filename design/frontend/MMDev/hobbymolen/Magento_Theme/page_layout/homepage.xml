@@ -21,7 +21,7 @@
                 <argument name="itemsMobile" xsi:type="boolean">false</argument>
             </arguments>
         </block>
-        <container name="shop-now-container" htmlTag="div" htmlClass="container" after="product.slider.newproduct">
+        <container name="shop-now-container" htmlTag="div" htmlClass="" after="product.slider.newproduct">
             <block class="Magento\Framework\View\Element\Template" name="home.shopnow" template="Magento_Theme::page/shopnow.phtml"/>
         </container>
     </referenceContainer>
