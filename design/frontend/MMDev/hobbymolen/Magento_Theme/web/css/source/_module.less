@@ -66,7 +66,10 @@
 //  _____________________________________________
 
 & when (@media-common = true) {
-
+  html {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
   body {
     .lib-css(background-color, @page__background-color);
   }
