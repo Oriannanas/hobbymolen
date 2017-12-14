@@ -55,7 +55,9 @@ $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
             }
         });
         $(document).on('touchstart', ':not(.nav-sections *)', function(){
-            $(document).find('.nav-sections li.open').removeClass('open');
+            if($( window ).width() > 768) {
+                $(document).find('.nav-sections li.open').removeClass('open');
+            }
         });
         $(document).on('click', '.nav-toggle', function(){
             $(document).find('.nav-sections').first().toggleClass('active');
