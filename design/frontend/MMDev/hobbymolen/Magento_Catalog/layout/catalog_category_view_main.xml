@@ -6,7 +6,7 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <referenceContainer name="page.wrapper">
+    <referenceContainer name="page.wrapper" htmlClass="page-wrapper category-view-main">
         <container name="category.category-list.wrapper" htmlTag="div" htmlClass="category-list-wrapper" after="main.content">
             <container name="category.category-list.container" htmlTag="div" htmlClass="category-list-container container">
                 <container name="category.category-list.container.row" htmlTag="div" htmlClass="row">
