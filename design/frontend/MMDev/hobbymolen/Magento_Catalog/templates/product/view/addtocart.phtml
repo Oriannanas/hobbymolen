@@ -12,48 +12,50 @@
 <?php $buttonTitle = __('Add to Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
 <div class="box-tocart">
-  <?php if ($block->shouldRenderQuantity()): ?>
-      <div class="field qty">
-          <p class="qty-label">Aantal:</p>
-          <div class="qty-control qty-min">
-              <img src="<?php echo $this->getViewFileUrl('images/icons/min_icon.svg'); ?>">
+    <div class="pull-left">
+      <?php if ($block->shouldRenderQuantity()): ?>
+          <div class="field qty">
+              <p class="qty-label">Aantal:</p>
+              <div class="qty-control qty-min">
+                  <img src="<?php echo $this->getViewFileUrl('images/icons/min_icon.svg'); ?>">
+              </div>
+              <div class="qty-control control">
+                  <input type="number"
+                         name="qty"
+                         id="qty"
+                         maxlength="12"
+                         value="<?php /* @escapeNotVerified */
+                         echo $block->getProductDefaultQty() * 1 ?>"
+                         title="<?php /* @escapeNotVerified */
+                         echo __('Qty') ?>" class="input-text qty"
+                         data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                  />
+              </div>
+              <div class="qty-control qty-plus">
+                  <img src="<?php echo $this->getViewFileUrl('images/icons/plus_icon.svg'); ?>">
+              </div>
           </div>
-          <div class="qty-control control">
-              <input type="number"
-                     name="qty"
-                     id="qty"
-                     maxlength="12"
-                     value="<?php /* @escapeNotVerified */
-                     echo $block->getProductDefaultQty() * 1 ?>"
-                     title="<?php /* @escapeNotVerified */
-                     echo __('Qty') ?>" class="input-text qty"
-                     data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
-              />
-          </div>
-          <div class="qty-control qty-plus">
-              <img src="<?php echo $this->getViewFileUrl('images/icons/plus_icon.svg'); ?>">
-          </div>
-      </div>
-  <?php endif; ?>
-    <div class="towishlist-container">
-        <a href="#"
-           class="action towishlist"
-           title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
-           aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
-           data-post='<?php /* @escapeNotVerified */
-           echo $block->getAddToWishlistParams($block->getProduct()); ?>'
-           data-action="add-to-wishlist"
-           role="button">
-          <?php $InWishlist =
-//          !empty($block->getWishlistHelper()->getWishlistItemCollection()->addFieldToFilter('product_id', $block->getProduct()->getId())->getData());
-            false;
-          if (!$InWishlist):?>
-              <img src="<?php echo $this->getViewFileUrl('images/icons/wishlist_icon.svg'); ?>">
-          <?php else: ?>
-              <img src="<?php echo $this->getViewFileUrl('images/icons/wishlist_icon_active.svg'); ?>">
-          <?php endif; ?>
-        </a>
       <?php endif; ?>
+      <?php endif; ?>
+        <div class="towishlist-container">
+            <a href="#"
+               class="action towishlist"
+               title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+               aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+               data-post='<?php /* @escapeNotVerified */
+               echo $block->getAddToWishlistParams($block->getProduct()); ?>'
+               data-action="add-to-wishlist"
+               role="button">
+              <?php $InWishlist =
+//          !empty($block->getWishlistHelper()->getWishlistItemCollection()->addFieldToFilter('product_id', $block->getProduct()->getId())->getData());
+                false;
+              if (!$InWishlist):?>
+                  <img src="<?php echo $this->getViewFileUrl('images/icons/wishlist_icon.svg'); ?>">
+              <?php else: ?>
+                  <img src="<?php echo $this->getViewFileUrl('images/icons/wishlist_icon_active.svg'); ?>">
+              <?php endif; ?>
+            </a>
+        </div>
     </div>
 
     <div class="actions">
@@ -78,6 +80,8 @@
         }
     }
 
+
+
 </script>
 <?php if (!$block->isRedirectToCartEnabled()) : ?>
     <script type="text/x-magento-init">
@@ -88,6 +92,8 @@
             }
         }
     }
+
+
 
     </script>
 <?php endif; ?>

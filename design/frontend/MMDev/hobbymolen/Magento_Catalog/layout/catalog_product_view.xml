@@ -10,7 +10,6 @@
         <referenceBlock name="catalog.compare.sidebar" remove="true"/>
         <referenceBlock name="view.addto.compare" remove="true" />
         <referenceBlock name="wishlist_sidebar" remove="true"/>
-        <referenceBlock element="product.info.stock.sku" remove="true"/>
         <referenceBlock name="reviews.tab" remove="true"/>
         <referenceContainer name="product.info.social" remove="true"/>
         <referenceContainer name="content">
@@ -24,7 +23,6 @@
             </container>
         </referenceContainer>
         <move element="product.info.media" destination="content.row.column-1" before="-"/>
-        <move element="product.info.main" destination="content.row.column-2" before="-"/>
         <move element="product.info.main" destination="content.row.column-2" before="-"/>
         <move element="product.info.overview" destination="product.info.main" before="product.info.price"/>
         <move element="product.info.description" destination="product.info.main" after="product.info.overview"/>
