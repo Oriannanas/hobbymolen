@@ -17,6 +17,7 @@
       appearance: none;
       cursor: pointer;
       width: auto;
+      padding-right: 35px!important;
     }
     label {
       position: absolute;
@@ -41,7 +42,7 @@
   }
   .pages {
     float: left;
-    margin-left: 60px;
+    margin-left: 10px;
     > .label {
       clip: auto;
       height: auto;
@@ -59,6 +60,15 @@
         color: black;
         text-decoration: underline;
       }
+    }
+  }
+}
+
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .toolbar {
+    .pages{
+      margin-left: 60px;
     }
   }
 }

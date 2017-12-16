@@ -43,6 +43,12 @@
 //  _____________________________________________
 
 & when (@media-common = true) {
+    .column.main, .column.main *{
+        max-width: 100%;
+    }
+    .fotorama__nav.fotorama__nav--thumbs {
+        overflow-x: scroll;
+    }
     .category-view-main{
         .page-title{
             margin-bottom: -30px;
@@ -660,10 +666,10 @@
 
     .page-layout-1column {
         .product-info-main {
-            width: 40%;
+            width: 100%;
         }
         .product.media {
-            width: 57%;
+            width: 100%;
         }
     }
 
@@ -671,11 +677,11 @@
     .page-layout-2columns-right,
     .page-layout-3columns {
         .product-info-main {
-            width: 48%;
+            width: 100%;
         }
 
         .product.media {
-            width: 50%;
+            width: 100%;
         }
     }
 }

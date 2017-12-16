@@ -350,9 +350,19 @@
       }
     }
 
+    .footer-column{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-top: 2px solid black;
+    }
+    .col-xs-6 {
+      &:nth-child(3), &:nth-child(4){
+        .footer-column {
+          border-bottom: 2px solid black;
+        }
+      }
+    }
     .footer-column-links {
-      padding-left: 25px;
-      border-left: 2px solid black;
       height: 100%;
       ul {
         padding-top: 12px;
@@ -446,7 +456,22 @@
     }
   }
 }
+
+//
+//  Mobile
+//  _____________________________________________
+
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .breadcrumbs{
+    .items{
+      > li{
+        width: 100%;
+        &:after{
+          margin-left: 10px!important;
+        }
+      }
+    }
+  }
   .nav-toggle:before{
     content: ' ';
     margin-top: 18px;
@@ -473,13 +498,15 @@
     .navigation {
       a {
         color: #000000;
+        min-height:32px;
       }
       > ul > li {
         display: block;
         border: 0;
         text-align: left;
         ul.submenu {
-          top: 0 !important;
+          top: 5px !important;
+          padding-left: 32px;
         }
       }
       li {
@@ -493,8 +520,8 @@
           > span {
             content: '';
             display: inline-block;
-            width: 25px;
-            height: 25px;
+            width: 32px;
+            height: 32px;
             position:absolute;
             left: 0;
             background: @icon_plus;
@@ -507,7 +534,8 @@
           }
         }
         ul.submenu {
-          font-size: 15px;
+          background: transparent;
+          font-size: 16px;
           padding: 5px 10px;
           position: relative;
           max-height: 0;
@@ -571,16 +599,15 @@
   }
 }
 
-
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = 321) {
   .block-search .control{
     max-width: 107px;
   }
 }
+
 //
 //  Desktop
 //  _____________________________________________
-
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
   .nav-sections {
     .navigation {
@@ -724,7 +751,13 @@
     }
   }
 
+  .footer-column {
+    border-top: 0;
+    border-bottom: 0!important;
+    border-left: 2px solid black;
+  }
   .footer-column-links {
+    padding-left: 25px;
     ul {
       li {
         text-indent: 20px;

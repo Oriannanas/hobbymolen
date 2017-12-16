@@ -34,27 +34,6 @@
                     <span class="filter-label"><?php echo $block->escapeHtml(__($_filter->getName())); ?></span>
                     <span class="filter-value"><?php /* @escapeNotVerified */ echo $block->stripTags($_filter->getLabel()) ?></span>
                 </a>
-<!--                --><?php
-//                $clearLinkUrl = $_filter->getClearLinkUrl();
-//                $currentFilterName = $block->escapeHtml(__($_filter->getName())) . " " . $block->stripTags($_filter->getLabel());
-//                if ($clearLinkUrl):
-//                    ?>
-<!--                    <a class="action previous" href="--><?php ///* @escapeNotVerified */ echo $_filter->getRemoveUrl() ?><!--"-->
-<!--                       title="--><?php ///* @escapeNotVerified */ echo __('Previous') ?><!--">-->
-<!--                        <span>--><?php ///* @escapeNotVerified */ echo __('Previous') ?><!--</span>-->
-<!--                    </a>-->
-<!--                    <a class="action remove"-->
-<!--                       title="--><?php //echo $block->escapeHtml($_filter->getFilter()->getClearLinkText()) ?><!--"-->
-<!--                       href="--><?php ///* @escapeNotVerified */ echo $clearLinkUrl ?><!--">-->
-<!--                        <span>--><?php //echo $block->escapeHtml($_filter->getFilter()->getClearLinkText()) ?><!--</span>-->
-<!--                    </a>-->
-<!--                --><?php //else: ?>
-<!--                <a class="action remove" href="--><?php ///* @escapeNotVerified */ echo $_filter->getRemoveUrl() ?><!--"-->
-<!--                   title="--><?php ///* @escapeNotVerified */ echo $block->escapeHtml(__('Remove')) . " " . $currentFilterName;?><!--">-->
-<!--                <span>--><?php ///* @escapeNotVerified */ echo __('Remove This Item') ?><!--</span>-->
-<!--                </a>-->
-<!--                --><?php //endif; ?>
-<!--            </li>-->
         <?php endforeach; ?>
     </ol>
 </div>

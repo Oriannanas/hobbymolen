@@ -15,7 +15,7 @@
 require(['jquery'], function ($) {
     $(document).on('click', '.shop-now', function(e){
         $('html, body').animate({
-            scrollTop: $('#category-list').offset().top
+            scrollTop: $('#category-list').find('.category').first().offset().top
         }, 500);
     });
 });

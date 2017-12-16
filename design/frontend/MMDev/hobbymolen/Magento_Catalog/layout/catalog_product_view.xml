@@ -13,5 +13,21 @@
         <referenceBlock element="product.info.stock.sku" remove="true"/>
         <referenceBlock name="reviews.tab" remove="true"/>
         <referenceContainer name="product.info.social" remove="true"/>
+        <referenceContainer name="content">
+            <container name="content.row" htmlTag="div" htmlClass="row">
+                <container name="content.row.column-1" htmlTag="div" htmlClass="col-md-7">
+
+                </container>
+                <container name="content.row.column-2" htmlTag="div" htmlClass="col-md-5">
+
+                </container>
+            </container>
+        </referenceContainer>
+        <move element="product.info.media" destination="content.row.column-1" before="-"/>
+        <move element="product.info.main" destination="content.row.column-2" before="-"/>
+        <move element="product.info.main" destination="content.row.column-2" before="-"/>
+        <move element="product.info.overview" destination="product.info.main" before="product.info.price"/>
+        <move element="product.info.description" destination="product.info.main" after="product.info.overview"/>
+        <move element="product.attributes" destination="product.info.main" after="product.info.description"/>
     </body>
 </page>

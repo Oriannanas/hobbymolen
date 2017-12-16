@@ -7,9 +7,10 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+
         <referenceContainer name="header.panel.wrapper" remove="true"/>
         <referenceBlock name="header-wrapper">
-            <container name="header-wrapper-row" as="header-wrapper-row" label="Header wrapper row" htmlTag="div" htmlClass="row header-row">
+            <container name="header-wrapper-row" label="Header wrapper row" htmlTag="div" htmlClass="row header-row">
                 <container name="header-wrapper-col-left" as="header-wrapper-col-left" label="Header wrapper col left" htmlTag="div" htmlClass="col-sm-6 header-column-left">
                 </container>
                 <container name="header-wrapper-col-right" as="header-wrapper-col-right" label="Header wrapper col right" htmlTag="div" htmlClass="col-sm-6 header-column-right ">
@@ -20,6 +21,7 @@
                 </container>
             </container>
         </referenceBlock>
+        <move element="customer.customer.data" destination="header-wrapper" before="header-wrapper-row"/>
         <referenceBlock name="logo">
             <arguments>
                 <argument name="logo_img_width" xsi:type="number">681</argument>
