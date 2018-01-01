@@ -94,7 +94,7 @@
 
   .nav-sections {
     .lib-css(background, @navigation__background);
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     margin-bottom: 0px!important;
     .navigation {
       font-family: @font-family-secondary-bold;
@@ -249,7 +249,7 @@
 
   .page-content{
     border: 2px solid black;
-    padding: 40px;
+    padding: 20px 40px;
   }
   .action.skip {
     &:not(:focus) {
@@ -679,7 +679,7 @@
     }
   }
   .page-main {
-    margin-top:40px;
+    margin-top: 20px;
     > .page-title-wrapper {
       .page-title {
         display: inline-block;
@@ -735,10 +735,6 @@
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
-  .header-column-right {
-    padding-top: 80px;
-  }
-
   .header-element {
     margin-left: 24px;
   }
@@ -796,7 +792,7 @@
     }
   }
   .header-column-right {
-    padding-top: 120px;
+    padding-top: 80px;
   }
   .header-element {
     margin-left: 18px;
@@ -822,6 +818,8 @@
 }
 
 .breadcrumbs {
+  padding-left:0px;
+  padding-right: 0px;
   ul.items {
     border: 6px solid transparent;
     padding: 5px 40px;
