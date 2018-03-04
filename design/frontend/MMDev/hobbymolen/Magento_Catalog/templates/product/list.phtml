@@ -79,7 +79,19 @@ $_helper            = $this->helper('Magento\Catalog\Helper\Output');
                               </a>
                           </strong>
                         <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
-                        <?php /* @escapeNotVerified */
+                          <?php
+                          $msrpInclAttribute = $_product->getResource()->getAttribute('msrp_incl');
+                          if ($msrpInclAttribute) {
+                            $msrpInclAttribute = floatval($msrpInclAttribute->getFrontend()->getValue($_product));
+                            if ($msrpInclAttribute) {
+                              ?>
+                                <div class="msrp">Advies prijs <span
+                                            class="msrp-price">€ <?= number_format($msrpInclAttribute, 2) ?></span>
+                                </div>
+                              <?php
+                            }
+                          }?>
+                          <?php /* @escapeNotVerified */
                         echo $block->getProductPrice($_product) ?>
                         <?php echo $block->getProductDetailsHtml($_product); ?>
                       </div>

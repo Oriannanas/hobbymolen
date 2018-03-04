@@ -44,6 +44,7 @@
       padding: 10px;
     }
     .product.name a {
+      font-size: 16px;
       font-weight: bold;
       color: #000000;
       &:hover, &:focus, &:active, &:visited {
@@ -62,7 +63,12 @@
       float: right;
     }
     .action.tocart.primary{
+      margin-top: 10px;
       width: 100%;
+
+      &:hover{
+
+      }
     }
   }
 
@@ -97,5 +103,12 @@
     &[disabled]{
       cursor: auto;
     }
+  }
+}
+
+.msrp {
+  color: rgb(130, 130, 130);
+  .msrp-price {
+    text-decoration: line-through;
   }
 }

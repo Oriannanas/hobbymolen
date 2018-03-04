@@ -18,7 +18,7 @@ $columnsLimit = $block->getColumnsLimit() ?: 0;
 $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
 
 <nav class="navigation" data-action="navigation">
-    <img src="<?php echo $this->getViewFileUrl('images/borders/border-1.svg'); ?>" class="navigation-border" alt="Navigation top border" />
+    <img src="<?php echo $this->getViewFileUrl('images/borders/border-1.svg'); ?>" class="navigation-border navigation-border-top" alt="Navigation top border" />
     <ul>
         <li class="level0 level-top">
             <a class="level-top" href="<?php echo $lBaseUrl; ?>">
@@ -33,7 +33,7 @@ $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
         </li>
       <?php /* @escapeNotVerified */ echo $block->getChildHtml(); ?>
     </ul>
-    <img src="<?php echo $this->getViewFileUrl('images/borders/border-1.svg'); ?>" class="navigation-border" alt="Navigation bottom border"/>
+    <img src="<?php echo $this->getViewFileUrl('images/borders/border-1.svg'); ?>" class="navigation-border navigation-border-bottom" alt="Navigation bottom border"/>
 </nav>
 
 <script>
