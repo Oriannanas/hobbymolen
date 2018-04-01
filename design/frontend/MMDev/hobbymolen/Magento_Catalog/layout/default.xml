@@ -11,5 +11,6 @@
         <referenceBlock name="catalog.compare.link" remove="true"/>
         <referenceBlock name="catalog.compare.sidebar" remove="true"/>
         <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="view.addto.compare" remove="true" />
     </body>
 </page>
