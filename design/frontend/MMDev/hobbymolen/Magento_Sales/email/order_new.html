@@ -22,6 +22,11 @@
     <tr class="email-intro">
         <td>
             <p class="greeting">{{trans "%customer_name," customer_name=$order.getCustomerName()}}</p>
+            {{if order.getEmailCustomerNote()}}
+            <p>
+                {{var order.getEmailCustomerNote()|escape|nl2br}}
+            </p>
+            {{else}}
             <p>
                 Bedankt voor uw bestelling bij {{trans "%store_name" store_name=$store.getFrontendName()}}.
                 <br>
@@ -32,6 +37,7 @@
             <p>
                 Voor verdere vragen over uw bestelling kunt u mailen naar {{trans '<a href="mailto:%store_email">%store_email</a>.' store_email=$store_email |raw}}
             </p>
+            {{/if}}
         </td>
     </tr>
     <tr class="email-summary">
@@ -42,15 +48,6 @@
     </tr>
     <tr class="email-information">
         <td>
-            {{depend order.getEmailCustomerNote()}}
-            <table class="message-info">
-                <tr>
-                    <td>
-                        {{var order.getEmailCustomerNote()|escape|nl2br}}
-                    </td>
-                </tr>
-            </table>
-            {{/depend}}
             <table class="order-details">
                 <tr>
                     <td class="address-details">
